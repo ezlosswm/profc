@@ -1,0 +1,64 @@
+import Link from "next/link";
+import type { ComponentProps, ReactNode } from "react";
+
+type ButtonVariant = "default" | "nav" | "outline" | "ghost";
+
+type BaseProps = {
+  children: ReactNode;
+  variant?: ButtonVariant;
+  className?: string;
+};
+
+type LinkProps = BaseProps & {
+  href: string;
+  onClick?: never;
+  disabled?: never;
+};
+
+type NativeButtonProps = BaseProps &
+  Omit<ComponentProps<"button">, "children" | "className"> & {
+    href?: undefined;
+  };
+
+type Props = LinkProps | NativeButtonProps;
+
+const variants: Record<ButtonVariant, string> = {
+  default: "bg-primary text-foreground hover:bg-primary-hover",
+  nav: "text-sm text-foreground/70 hover:text-foreground",
+  ghost: "p-4 hover:bg-foreground/5",
+  outline:
+    "border border-white/40 hover:border-white hover:bg-white/10 bg-background hover:bg-accent hover:text-accent-foreground",
+};
+
+const baseStyles =
+  "inline-flex cursor-pointer leading-5 items-center justify-center px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50";
+
+export function Button(props: Props) {
+  const { children, variant = "default" } = props;
+
+  const className = [baseStyles, variants[variant], props.className]
+    .filter(Boolean)
+    .join(" ");
+
+  if (props.href !== undefined) {
+    return (
+      <Link href={props.href} className={className}>
+        {children}
+      </Link>
+    );
+  }
+
+  const {
+    href,
+    variant: _variant,
+    className: _className,
+    children: _children,
+    ...buttonProps
+  } = props;
+
+  return (
+    <button className={className} {...buttonProps}>
+      {children}
+    </button>
+  );
+}
