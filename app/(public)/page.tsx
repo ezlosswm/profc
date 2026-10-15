@@ -1,9 +1,11 @@
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/MarqueeBanner";
 
 export function Home() {
   return (
-    <div className="mt-16">
+    <div>
       <Hero />
+      <Marquee />
     </div>
   );
 }

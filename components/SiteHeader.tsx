@@ -6,30 +6,12 @@ import Link from "next/link";
 import logo from "@/public/images/Logo.webp";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { navLinks } from "@/data/navLinks";
 
-export function Navbar() {
+export function SiteHeader() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
-
-  const navLinks = [
-    {
-      title: "Home",
-      href: "/",
-    },
-    {
-      title: "About",
-      href: "/about",
-    },
-    {
-      title: "Champions",
-      href: "/champions",
-    },
-    {
-      title: "Contact",
-      href: "/contact",
-    },
-  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -52,37 +34,39 @@ export function Navbar() {
         aria-label="Main menu"
         className="hidden h-16 w-full mx-auto max-w-7xl px-5 md:px-8 md:flex items-center justify-between"
       >
-        <ul className="flex items-center gap-2">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Button
-                  className={
-                    isActive
-                      ? "text-white underline underline-offset-6 decoration-primary"
-                      : ""
-                  }
-                  href={link.href}
-                  variant="nav"
-                >
-                  {link.title}
-                </Button>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="flex gap-24 flex-row-reverse justify-between">
+          <ul className="flex items-center gap-2">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Button
+                    className={
+                      isActive
+                        ? "text-white underline underline-offset-6 decoration-primary"
+                        : ""
+                    }
+                    href={link.href}
+                    variant="nav"
+                  >
+                    {link.title}
+                  </Button>
+                </li>
+              );
+            })}
+          </ul>
 
-        <Link aria-label="PROFC Belize Home" href="/" className="mr-48">
-          <Image
-            src={logo}
-            alt="PROFC logo"
-            width={500}
-            height={500}
-            priority
-            className="w-37.5 h-12.5"
-          />
-        </Link>
+          <Link aria-label="PROFC Belize Home" href="/">
+            <Image
+              src={logo}
+              alt="PROFC logo"
+              width={500}
+              height={500}
+              priority
+              className="w-37.5 h-12.5"
+            />
+          </Link>
+        </div>
 
         <Button href="/contact">Get tickets</Button>
       </nav>
@@ -136,4 +120,4 @@ export function Navbar() {
   );
 }
 
-export default Navbar;
+export default SiteHeader;
