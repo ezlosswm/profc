@@ -1,12 +1,12 @@
 import Hero from "@/components/Hero";
 import Image from "next/image";
 import hero from "@/public/images/hero-sample.webp";
-import { Marquee } from "@/components/MarqueeBanner";
+import Marquee from "@/components/MarqueeBanner";
 import SponsorsAndPartners from "@/components/SponsorsAndPartners";
 import { LatestNews } from "@/components/LatestNews";
 import { Suspense } from "react";
 
-export function Home() {
+function Home() {
   return (
     <>
       <Suspense
@@ -40,7 +40,9 @@ export function Home() {
       >
         <Hero />
       </Suspense>
-      <Marquee />
+      <Suspense fallback={<></>}>
+        <Marquee />
+      </Suspense>
       <LatestNews />
       <SponsorsAndPartners />
     </>

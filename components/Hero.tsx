@@ -1,6 +1,7 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import hero from "@/public/images/hero-sample.webp";
+import type { NextEvent } from "@/types/types";
 import { connection } from "next/server";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
@@ -12,14 +13,6 @@ const EVENTS_QUERY = `
 `;
 const options = {
   next: { revalidate: 30 },
-};
-
-type NextEvent = {
-  name: string;
-  dateLabel?: string;
-  startsAt: string;
-  venue?: string;
-  city?: string;
 };
 
 export default async function Hero() {
