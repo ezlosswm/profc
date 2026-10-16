@@ -34,7 +34,7 @@ export function SiteHeader() {
         aria-label="Main menu"
         className="hidden h-16 w-full mx-auto max-w-7xl px-5 md:px-8 md:flex items-center justify-between"
       >
-        <div className="flex gap-24 flex-row-reverse justify-between">
+        <div className="flex gap-24 flex-row justify-between">
           <ul className="flex items-center gap-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
