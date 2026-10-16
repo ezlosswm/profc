@@ -5,7 +5,7 @@ import type { NextEvent } from "@/types/types";
 import { connection } from "next/server";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
-import { client } from "@/src/sanity/client";
+import { client } from "@/sanity/client";
 
 const EVENTS_QUERY = `
   *[_type == "nextEvent" && startsAt >= $now]

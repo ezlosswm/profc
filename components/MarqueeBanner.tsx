@@ -1,6 +1,6 @@
 import type { NextEvent } from "@/types/types";
 import { connection } from "next/server";
-import { client } from "@/src/sanity/client";
+import { client } from "@/sanity/client";
 import { formatToMarqueeArray } from "@/lib/formatter";
 
 const EVENTS_QUERY = `
