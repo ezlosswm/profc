@@ -1,6 +1,6 @@
 export function About() {
   return (
-    <div className="mt-16 min-h-dvh">
+    <div className="mt-16">
       <h1>Champions</h1>
     </div>
   );
