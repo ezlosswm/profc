@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 
 export type CountdownParts = {
@@ -11,17 +12,17 @@ export type CountdownParts = {
 
 function compute(target: number): CountdownParts {
   const diff = Math.max(0, target - Date.now());
+
   return {
-    days: Math.floor(diff / 86400000),
-    hours: Math.floor((diff / 3600000) % 24),
-    minutes: Math.floor((diff / 60000) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
+    days: Math.floor(diff / 86_400_000),
+    hours: Math.floor((diff / 3_600_000) % 24),
+    minutes: Math.floor((diff / 60_000) % 60),
+    seconds: Math.floor((diff / 1_000) % 60),
     done: diff === 0,
   };
 }
 
 export function useCountdown(iso: string): CountdownParts {
-  const target = new Date(iso).getTime();
   const [parts, setParts] = useState<CountdownParts>({
     days: 0,
     hours: 0,
@@ -31,12 +32,29 @@ export function useCountdown(iso: string): CountdownParts {
   });
 
   useEffect(() => {
-    const id = window.setInterval(() => {
-      setParts(compute(target));
-    }, 1000);
+    const target = Date.parse(iso);
 
-    return () => window.clearInterval(id);
-  }, [target]);
+    const update = () => {
+      if (!Number.isFinite(target)) {
+        setParts({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          done: true,
+        });
+        return;
+      }
+
+      setParts(compute(target));
+    };
+
+    update();
+
+    const interval = window.setInterval(update, 1000);
+
+    return () => window.clearInterval(interval);
+  }, [iso]);
 
   return parts;
 }

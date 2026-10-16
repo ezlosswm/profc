@@ -89,7 +89,11 @@ export function SiteHeader() {
               <Button href="/contact">Get tickets</Button>
             </div>
 
-            <Button variant="ghost" onClick={() => setOpen((prev) => !prev)}>
+            <Button
+              aria-label={open ? "Close menu" : "Open menu"}
+              variant="ghost"
+              onClick={() => setOpen((prev) => !prev)}
+            >
               {open ? <X /> : <Menu />}
             </Button>
           </div>

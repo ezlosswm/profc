@@ -1,6 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.magicpatterns.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
   /* config options here */
   experimental: {
     agentFeedback: true,
