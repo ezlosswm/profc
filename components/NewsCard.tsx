@@ -29,7 +29,7 @@ export function NewsCard({
         />
       </div>
 
-      <span className="mt-5 text-xs font-medium text-foreground/70">
+      <span className="mt-5 text-xs font-medium text-muted-foreground">
         {dateLabel}
       </span>
       <h3 className="mt-2 font-heading text-2xl uppercase leading-tight md:text-3xl">

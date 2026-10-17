@@ -34,7 +34,7 @@ export function SiteHeader() {
         aria-label="Main menu"
         className="hidden h-16 w-full mx-auto max-w-7xl px-5 md:px-8 md:flex items-center justify-between"
       >
-        <div className="flex gap-24 flex-row justify-between">
+        <div className="flex gap-24 flex-row-reverse justify-between">
           <ul className="flex items-center gap-2">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -60,10 +60,10 @@ export function SiteHeader() {
             <Image
               src={logo}
               alt="PROFC logo"
-              width={500}
-              height={500}
+              width={150}
+              height={50}
               priority
-              className="w-37.5 h-12.5"
+              className="w-37.5 h-full"
             />
           </Link>
         </div>
@@ -77,10 +77,10 @@ export function SiteHeader() {
             <Image
               src={logo}
               alt="PROFC logo"
-              width={500}
-              height={500}
+              width={150}
+              height={50}
               priority
-              className="w-37.5 h-12.5"
+              className="w-37.5 h-full"
             />
           </Link>
 

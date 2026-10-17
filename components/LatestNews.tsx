@@ -22,7 +22,7 @@ export function LatestNews() {
         </div>
 
         {newsArticles.length === 0 ? (
-          <p className="mt-10 border-t border-border pt-6 text-foreground/70">
+          <p className="mt-10 border-t border-border pt-6 text-muted-foreground">
             None
           </p>
         ) : (

@@ -16,8 +16,12 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  title: "PROFC",
+  title: "PROFC Belize",
   description: "PROFC",
+  openGraph: {
+    title: "Home Page | PROFC",
+    description: "Home Page",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -6,6 +6,8 @@ import { connection } from "next/server";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
 import { client } from "@/sanity/client";
+import Section from "./ui/section";
+import { urlFor } from "@/sanity/image";
 
 const EVENTS_QUERY = `
   *[_type == "nextEvent" && startsAt >= $now]
@@ -46,10 +48,10 @@ export default async function Hero() {
       {/* TODO: Fix image alt text */}
       <div className="size-full">
         <Image
-          src={hero}
+          src={urlFor(nextEvent.image!.asset).width(1920).height(1080).url()}
           alt="Upcoming event flyer"
-          width={1000}
-          height={1000}
+          width={1920}
+          height={1080}
           priority
           className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
         />
@@ -60,7 +62,7 @@ export default async function Hero() {
       />
 
       {/* Content */}
-      <div className="mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 md:px-8 md:pb-24">
+      <Section className="mx-auto flex min-h-[92vh] flex-col justify-end pb-16 pt-28 md:pb-24">
         <h1
           id="hero-title"
           className="font-heading uppercase tracking-tight mt-3 leading-[0.85] text-[22vw] sm:text-[9rem] lg:text-[11rem]"
@@ -75,7 +77,7 @@ export default async function Hero() {
 
           <div className="flex gap-1 items-center">
             <MapPin className="size-4 text-primary" />
-            <p className="text-foreground/70">
+            <p className="text-muted-foreground">
               {nextEvent.venue}, {nextEvent.city}
             </p>
           </div>
@@ -97,7 +99,7 @@ export default async function Hero() {
             </Button>
           </div>
         </div>
-      </div>
+      </Section>
     </main>
   );
 }

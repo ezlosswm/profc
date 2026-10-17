@@ -25,7 +25,7 @@ type Props = LinkProps | NativeButtonProps;
 
 const variants: Record<ButtonVariant, string> = {
   default: "bg-primary text-foreground hover:bg-primary-hover",
-  nav: "text-sm text-foreground/70 hover:text-foreground",
+  nav: "text-sm text-muted-foreground hover:text-foreground",
   link: "font-semibold hover:text-primary",
   ghost: "p-4 hover:bg-foreground/5",
   outline:

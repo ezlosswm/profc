@@ -31,7 +31,7 @@ export default function SiteFooter() {
       </div>
 
       <div className="mx-auto max-w-7xl border-t border-border px-5 py-6 md:px-8">
-        <p className="text-sm text-foreground/70">
+        <p className="text-sm text-muted-foreground">
           ©{""}
           <Suspense fallback="2026">
             <CurrentYear />

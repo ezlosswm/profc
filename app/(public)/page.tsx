@@ -33,7 +33,7 @@ function Home() {
 
             <div className="flex min-h-[92vh] items-center justify-center">
               Loading upcoming event...
-              <p className="text-6xl font-heading animate-pulse text-foreground/70"></p>
+              <p className="text-6xl font-heading animate-pulse text-muted-foreground"></p>
             </div>
           </main>
         }
