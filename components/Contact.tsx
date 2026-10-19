@@ -150,17 +150,16 @@ function ContactPage() {
                       required
                     ></textarea>
                   </label>
-
-                  <Button type="submit" disabled={status === "sending"}>
-                    {status === "sending" && (
-                      <LoaderCircle
-                        className="size-4 animate-spin"
-                        aria-hidden="true"
-                      />
-                    )}
-                    {status === "sending" ? "Sending..." : "Send message"}
-                  </Button>
                 </div>
+                <Button type="submit" disabled={status === "sending"}>
+                  {status === "sending" && (
+                    <LoaderCircle
+                      className="size-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  )}
+                  {status === "sending" ? "Sending..." : "Send message"}
+                </Button>
               </form>
             )}
           </div>
