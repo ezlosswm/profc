@@ -91,13 +91,20 @@ export default async function Hero() {
 
           {/* Button group */}
           <div className="inline-flex gap-2">
-            <Button className="gap-1 group px-6 py-4 font-semibold">
+            <Button
+              href="/contact"
+              className="gap-1 group px-6 py-4 font-semibold"
+            >
               Get tickets
               <span className="group-hover:translate-x-0.5 transition-transform ease-out">
                 <ArrowRight className="size-4" />
               </span>
             </Button>
-            <Button variant="outline" className="px-6 py-4 font-semibold">
+            <Button
+              href="/contact"
+              variant="outline"
+              className="px-6 py-4 font-semibold"
+            >
               Become a sponsors
             </Button>
           </div>
