@@ -1,8 +1,8 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 
-export const aboutSectionType = defineType({
-  name: "aboutSection",
-  title: "About Section",
+export const aboutPageType = defineType({
+  name: "aboutPage",
+  title: "About Page",
   type: "document",
   fields: [
     defineField({

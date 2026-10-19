@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Section from "@/components/ui/section";
 import { client } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
-import { AboutSectionData } from "@/types/types";
+import { AboutPageData } from "@/types/types";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -14,26 +14,22 @@ export const metadata: Metadata = {
   },
 };
 
-const ABOUT_QUERY = `*[_type == "aboutSection"][0]`;
+const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
 
 const options = {
   next: { revalidate: 30 },
 };
 
 async function About() {
-  let aboutSectionData: AboutSectionData | null = null;
+  let aboutPageData: AboutPageData | null = null;
 
   try {
-    aboutSectionData = await client.fetch<AboutSectionData>(
-      ABOUT_QUERY,
-      {},
-      options,
-    );
+    aboutPageData = await client.fetch<AboutPageData>(ABOUT_QUERY, {}, options);
   } catch (error) {
     console.error("Query failed: ", (error as Error).message);
   }
 
-  if (!aboutSectionData) {
+  if (!aboutPageData) {
     return <Section>No about info</Section>;
   }
 
@@ -41,7 +37,7 @@ async function About() {
     <main aria-labelledby="about-hero-title">
       <section className="relative min-h-[46vh]">
         <Image
-          src={urlFor(aboutSectionData.image!.asset)
+          src={urlFor(aboutPageData.image!.asset)
             .width(1920)
             .height(1080)
             .url()}
@@ -59,10 +55,10 @@ async function About() {
             id="about-hero-title"
             className="uppercase font-heading text-5xl mt-4 md:text-6xl"
           >
-            {aboutSectionData.heading}
+            {aboutPageData.heading}
           </h1>
           <p className="text-foreground/70 mt-6 max-w-lg text-lg">
-            {aboutSectionData.description}
+            {aboutPageData.description}
           </p>
         </div>
         <div className="lg:col-span-6">
@@ -70,7 +66,7 @@ async function About() {
             Leadership & broadcast team
           </h2>
           <ul className="mt-4 divide-y divide-border border-border border-y">
-            {aboutSectionData.team.map((team) => (
+            {aboutPageData.team.map((team) => (
               <li
                 key={team.name}
                 className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"

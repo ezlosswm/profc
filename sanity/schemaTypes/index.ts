@@ -1,7 +1,8 @@
 import { type SchemaTypeDefinition } from "sanity";
 import { eventType } from "./eventType";
-import { aboutSectionType } from "./aboutSectionType";
+import { aboutPageType } from "./aboutPageType";
+import { championsPageType } from "./championsPageType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [eventType, aboutSectionType],
+  types: [eventType, aboutPageType, championsPageType],
 };

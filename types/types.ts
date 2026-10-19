@@ -21,7 +21,7 @@ type TeamData = {
   name: string;
 };
 
-export type AboutSectionData = {
+export type AboutPageData = {
   heading: string;
   description: string;
   image?: ImageAsset;
@@ -29,3 +29,16 @@ export type AboutSectionData = {
 };
 
 export type FormStatus = "idle" | "sending" | "sent" | "error";
+
+type ChampionData = {
+  division: string;
+  name: string;
+  nickname?: string;
+  limit: string;
+  image: ImageAsset;
+};
+
+export type ChampionsPageData = {
+  description: string;
+  champions: ChampionData[];
+};
