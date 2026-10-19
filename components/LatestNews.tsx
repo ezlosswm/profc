@@ -9,10 +9,10 @@ export function LatestNews() {
   return (
     <div className="border-t border-border bg-muted-background py-20 md:py-28">
       <Section aria-labelledby="latest-news-title">
-        <div className="flex items-baseline w-full justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading id="latest-news-title" heading="Latest News" />
 
-          <Button variant="link" className="group">
+          <Button variant="link" className="group px-0! sm:px-4 justify-start">
             <span>View all news</span>
             <ArrowRight
               aria-hidden="true"

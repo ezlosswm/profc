@@ -57,7 +57,7 @@ export default async function Hero() {
         />
       </div>
       <div
-        className="absolute inset-0 -z-10 bg-background md:bg-background/60"
+        className="absolute inset-0 -z-10 bg-background/60"
         aria-hidden="true"
       />
 
@@ -70,13 +70,16 @@ export default async function Hero() {
           {nextEvent.name}
         </h1>
 
-        <div className="mt-6 flex gap-4 text-lg font-semibold">
+        <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
           <p>{nextEvent.dateLabel}</p>
 
-          <div id="divider" className="h-6 w-px bg-foreground/50"></div>
+          <div
+            id="divider"
+            className="h-6 w-px bg-foreground/50 hidden sm:block"
+          ></div>
 
-          <div className="flex gap-1 items-center">
-            <MapPin className="size-4 text-primary" />
+          <div className="flex gap-2 items-center">
+            <MapPin aria-hidden="true" className="size-4 text-primary" />
             <p className="text-muted-foreground">
               {nextEvent.venue}, {nextEvent.city}
             </p>
