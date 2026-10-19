@@ -27,3 +27,5 @@ export type AboutSectionData = {
   image?: ImageAsset;
   team: TeamData[];
 };
+
+export type FormStatus = "idle" | "sending" | "sent" | "error";

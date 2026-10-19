@@ -1,8 +1,18 @@
-export function Contact() {
-  <>
-    <div className="mt-16 min-h-dvh">
-      <h1>Contact</h1>
-    </div>
-  </>;
+import { Metadata } from "next";
+import ContactPage from "@/components/Contact";
+
+export const instant = false;
+
+export const metadata: Metadata = {
+  title: "Contact Us | PROFC Belize",
+  description: "PROFC",
+  openGraph: {
+    title: "Contact | PROFC",
+    description: "Contact Page",
+  },
+};
+
+function Contact() {
+  return <ContactPage />;
 }
 export default Contact;

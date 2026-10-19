@@ -29,7 +29,7 @@ const variants: Record<ButtonVariant, string> = {
   link: "font-semibold hover:text-primary",
   ghost: "p-4 hover:bg-foreground/5",
   outline:
-    "border border-white/40 hover:border-white hover:bg-white/10 bg-background hover:bg-accent hover:text-accent-foreground",
+    "border border-white/40 hover:border-white hover:bg-white/10 bg-background",
 };
 
 const baseStyles =
