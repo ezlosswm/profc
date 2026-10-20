@@ -43,6 +43,7 @@ export default async function AllEvent() {
           alt={`Event flyer for ${allEvents![0].name}`}
           width={1920}
           height={1080}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
           className="aspect-video size-full object-cover md:col-span-7 md:aspect-auto md:min-h-80"
           loading="lazy"
         />
@@ -89,10 +90,10 @@ export default async function AllEvent() {
           <li key={index + 1}>
             <article className="flex h-full flex-col border border-border bg-background">
               <Image
-                src={urlFor(event.image!.asset).width(1920).height(1080).url()}
+                src={urlFor(event.image!.asset).width(800).height(500).url()}
                 alt={`Fight card for ${event.name}`}
-                width={1920}
-                height={1080}
+                width={660}
+                height={412}
                 loading="lazy"
                 className="aspect-16/10 w-full object-fill"
               />
