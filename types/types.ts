@@ -42,3 +42,20 @@ export type ChampionsPageData = {
   description: string;
   champions: ChampionData[];
 };
+
+type SlugData = {
+  current: "string";
+};
+
+export type Event = {
+  name: string;
+  slug: SlugData;
+  redCorner: string;
+  blueCorner: string;
+  dateLabel?: string;
+  startsAt: string;
+  venue?: string;
+  city?: string;
+  type?: string;
+  image?: ImageAsset;
+};

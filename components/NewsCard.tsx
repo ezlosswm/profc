@@ -24,7 +24,7 @@ export function NewsCard({
           alt={title}
           className="object-cover w-full aspect-16/10"
           loading="lazy"
-          width={200}
+          width={320}
           height={200}
         />
       </div>

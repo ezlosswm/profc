@@ -19,8 +19,8 @@ export default function SiteFooter() {
             <Image
               src={logo}
               alt="PROFC logo"
-              width={500}
-              height={500}
+              width={150}
+              height={50}
               priority
               className="w-37.5 h-12.5"
             />

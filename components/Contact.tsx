@@ -54,7 +54,7 @@ function ContactPage() {
   return (
     <main aria-labelledby="contact-title">
       <Section className="min-h-[80vh] bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <h1
               id="contact-title"

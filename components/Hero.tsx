@@ -1,6 +1,5 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import hero from "@/public/images/hero-sample.webp";
 import type { NextEvent } from "@/types/types";
 import { connection } from "next/server";
 import { Button } from "./ui/button";
@@ -13,6 +12,10 @@ const EVENTS_QUERY = `
   *[_type == "nextEvent" && startsAt >= $now]
   | order(startsAt asc)[0]
 `;
+
+// single point of input all events schema
+// const EVENTS_QUERY = `*[_type == "allEvents" && startsAt >= $now] | order(startsAt desc)[0]`;
+
 const options = {
   next: { revalidate: 30 },
 };
