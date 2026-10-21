@@ -1,16 +1,14 @@
-import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import ContactPage from "@/components/Contact";
 
 export const instant = false;
 
-export const metadata: Metadata = {
-  title: "Contact Us | PROFC Belize",
-  description: "PROFC",
-  openGraph: {
-    title: "Contact | PROFC",
-    description: "Contact Page",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "Contact",
+  description:
+    "Contact PROFC Belize for event inquiries, sponsorship opportunities, and business partnerships.",
+  path: "/contact",
+});
 
 function Contact() {
   return <ContactPage />;

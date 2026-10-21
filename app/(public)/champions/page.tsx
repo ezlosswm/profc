@@ -1,9 +1,15 @@
 import Section from "@/components/ui/section";
 import { client } from "@/sanity/client";
 import { ChampionsPageData } from "@/types/types";
+import { createPageMetadata } from "@/lib/seo";
 import ChampionsInteractive from "@/components/ChampionsInteractive";
 
-// TODO: Add metadata for SEO
+export const metadata = createPageMetadata({
+  title: "MMA Champions & Titleholders | PROFC Belize",
+  description:
+    "Meet the PROFC Belize champions and titleholders. Explore championship divisions, fighter achievements, and the athletes competing for MMA titles.",
+  path: "/champions",
+});
 
 const CHAMPIONS_QUERY = `*[_type == "championsPage"][0]`;
 const options = {

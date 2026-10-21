@@ -5,7 +5,6 @@ export default function Loader() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background">
       <div className="relative aspect-2.5/1 w-75 sm:w-112.5">
-        {/* Grayscale logo */}
         <Image
           src={logo}
           alt="PROFC Logo"
@@ -13,8 +12,6 @@ export default function Loader() {
           priority
           className="object-contain grayscale contrast-125 opacity-40"
         />
-
-        {/* Full-color logo revealed with clip-path */}
         <Image
           src={logo}
           alt=""

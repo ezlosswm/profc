@@ -1,43 +1,30 @@
-import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import Section from "@/components/ui/section";
-import { client } from "@/sanity/client";
 import { urlFor } from "@/sanity/image";
 import { AboutPageData } from "@/types/types";
 import Image from "next/image";
+import { sanityFetch } from "@/lib/sanity";
 
-export const metadata: Metadata = {
-  title: "About Us | PROFC Belize",
-  description: "PROFC",
-  openGraph: {
-    title: "About Us | PROFC",
-    description: "About Page",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "About PROFC Belize | Our MMA Promotion",
+  description:
+    "Learn about PROFC Belize, our mission, the team behind our MMA events, and our commitment to showcasing mixed martial arts in Belize.",
+  path: "/about",
+});
 
 const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
 
-const options = {
-  next: { revalidate: 30 },
-};
-
 async function About() {
-  let aboutPageData: AboutPageData | null = null;
-
-  try {
-    aboutPageData = await client.fetch<AboutPageData>(ABOUT_QUERY, {}, options);
-  } catch (error) {
-    console.error("Query failed: ", (error as Error).message);
-  }
-
-  if (!aboutPageData) {
-    return <Section>No about info</Section>;
-  }
+  const aboutPageData = await sanityFetch<AboutPageData>({
+    query: ABOUT_QUERY,
+    errorMessage: "Unable to get about page data",
+  });
 
   return (
     <main aria-labelledby="about-hero-title">
       <section className="relative min-h-[46vh]">
         <Image
-          src={urlFor(aboutPageData.image!.asset)
+          src={urlFor(aboutPageData!.image!.asset)
             .width(1920)
             .height(1080)
             .url()}
@@ -55,10 +42,10 @@ async function About() {
             id="about-hero-title"
             className="uppercase font-heading text-5xl mt-4 md:text-6xl"
           >
-            {aboutPageData.heading}
+            {aboutPageData!.heading}
           </h1>
           <p className="text-foreground/70 mt-6 max-w-lg text-lg">
-            {aboutPageData.description}
+            {aboutPageData!.description}
           </p>
         </div>
         <div className="lg:col-span-6">
@@ -66,7 +53,7 @@ async function About() {
             Leadership & broadcast team
           </h2>
           <ul className="mt-4 divide-y divide-border border-border border-y">
-            {aboutPageData.team.map((team) => (
+            {aboutPageData!.team.map((team) => (
               <li
                 key={team.name}
                 className="flex flex-col gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
