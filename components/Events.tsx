@@ -1,31 +1,15 @@
-import { client } from "@/sanity/lib/client";
-import { Event } from "@/types/types";
-import { connection } from "next/server";
+import type { Event } from "@/types/types";
 import Section from "./ui/section";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 
-const ALL_EVENTS_QUERY = `*[_type == "allEvents"] | order(startsAt desc)`;
-
-const options = {
-  next: { revalidate: 30 },
+type EventProps = {
+  allEvents: Event[];
 };
 
-export default async function AllEvent() {
-  await connection();
-
-  let allEvents: Event[] | null = null;
-  try {
-    allEvents = await client.fetch<Event[]>(ALL_EVENTS_QUERY, {}, options);
-  } catch (error) {
-    console.error(
-      "Getting all events query failed: ",
-      (error as Error).message,
-    );
-  }
-
+export default async function AllEvent({ allEvents }: EventProps) {
   return (
     <Section aria-labelledby="all-events-title" className="py-20 md:py-28">
       <h2

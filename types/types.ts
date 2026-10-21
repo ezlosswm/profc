@@ -59,3 +59,14 @@ export type Event = {
   type?: string;
   image?: ImageAsset;
 };
+
+export type Sponsor = {
+  sponsorName: string;
+  sponsorImage: ImageAsset;
+};
+
+export type HomePageData = {
+  upcomingEvent: Event[];
+  sponsor: Sponsor[];
+  heroImage: ImageAsset;
+};

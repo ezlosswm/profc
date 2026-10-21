@@ -1,36 +1,12 @@
-import type { NextEvent } from "@/types/types";
-import { connection } from "next/server";
-import { client } from "@/sanity/client";
+import type { Event } from "@/types/types";
 import { formatToMarqueeArray } from "@/lib/formatter";
 
-const EVENTS_QUERY = `
-  *[_type == "nextEvent" && startsAt >= $now]
-  | order(startsAt asc)[0]
-`;
-const options = {
-  next: { revalidate: 30 },
+type MarqueeProps = {
+  event: Event;
 };
 
-export default async function Marquee() {
-  await connection();
-
-  let nextEvent: NextEvent | null = null;
-
-  try {
-    nextEvent = await client.fetch<NextEvent>(
-      EVENTS_QUERY,
-      { now: new Date().toISOString() },
-      options,
-    );
-  } catch (error) {
-    console.error("Query failed: ", (error as Error).message);
-  }
-
-  if (!nextEvent) {
-    return <>No event</>;
-  }
-
-  const eventArray = formatToMarqueeArray(nextEvent);
+export default async function Marquee({ event }: MarqueeProps) {
+  const eventArray = formatToMarqueeArray(event);
 
   return (
     <div

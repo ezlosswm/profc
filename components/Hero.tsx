@@ -1,48 +1,17 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import type { NextEvent } from "@/types/types";
-import { connection } from "next/server";
+import type { ImageAsset, Event } from "@/types/types";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
-import { client } from "@/sanity/client";
 import Section from "./ui/section";
 import { urlFor } from "@/sanity/image";
 
-const EVENTS_QUERY = `
-  *[_type == "nextEvent" && startsAt >= $now]
-  | order(startsAt asc)[0]
-`;
-
-// single point of input all events schema
-// const EVENTS_QUERY = `*[_type == "allEvents" && startsAt >= $now] | order(startsAt desc)[0]`;
-
-const options = {
-  next: { revalidate: 30 },
+type HeroProps = {
+  heroImage: ImageAsset;
+  event: Event;
 };
 
-export default async function Hero() {
-  await connection();
-
-  let nextEvent: NextEvent | null = null;
-
-  try {
-    nextEvent = await client.fetch<NextEvent>(
-      EVENTS_QUERY,
-      { now: new Date().toISOString() },
-      options,
-    );
-  } catch (error) {
-    console.error("Query failed: ", (error as Error).message);
-  }
-
-  if (!nextEvent) {
-    return (
-      <section>
-        <p>No upcoming event</p>
-      </section>
-    );
-  }
-
+export default async function Hero({ heroImage, event }: HeroProps) {
   return (
     <main
       aria-labelledby="hero-title"
@@ -51,7 +20,7 @@ export default async function Hero() {
       {/* TODO: Fix image alt text */}
       <div className="size-full">
         <Image
-          src={urlFor(nextEvent.image!.asset).width(1920).height(1080).url()}
+          src={urlFor(heroImage).width(1920).height(1080).url()}
           alt="Upcoming event flyer"
           width={1920}
           height={1080}
@@ -70,11 +39,11 @@ export default async function Hero() {
           id="hero-title"
           className="font-heading uppercase tracking-tight mt-3 leading-[0.85] text-[22vw] sm:text-[9rem] lg:text-[11rem]"
         >
-          {nextEvent.name}
+          {event.name}
         </h1>
 
         <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
-          <p>{nextEvent.dateLabel}</p>
+          <p>{event.dateLabel}</p>
 
           <div
             id="divider"
@@ -84,13 +53,13 @@ export default async function Hero() {
           <div className="flex gap-2 items-center">
             <MapPin aria-hidden="true" className="size-4 text-primary" />
             <p className="text-muted-foreground">
-              {nextEvent.venue}, {nextEvent.city}
+              {event.venue}, {event.city}
             </p>
           </div>
         </div>
 
         <div className="mt-10 flex gap-8 lg:items-end lg:justify-between flex-col lg:flex-row">
-          <Countdown startsAt={nextEvent.startsAt} />
+          <Countdown startsAt={event.startsAt} />
 
           {/* Button group */}
           <div className="inline-flex gap-2">
