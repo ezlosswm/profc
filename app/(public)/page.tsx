@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import HomePage from "@/components/Home";
 import Loader from "@/components/Loader";
 import { Suspense } from "react";
