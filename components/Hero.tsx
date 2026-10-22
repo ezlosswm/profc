@@ -20,7 +20,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
       {/* TODO: Fix image alt text */}
       <div className="size-full">
         <Image
-          src={urlFor(heroImage).width(1920).height(1080).url()}
+          src={urlFor(heroImage).width(1920).height(1080).auto("format").url()}
           alt="Upcoming event flyer"
           width={1920}
           height={1080}

@@ -1,6 +1,6 @@
 export const formTopics = [
   "Tickets",
   "Sponsorship",
-  "Fight for PFOFC",
+  "Fight for PROFC",
   "Media & press",
 ];

@@ -12,7 +12,10 @@ import { connection } from "next/server";
 const HOMEPAGE_QUERY = `
   *[_type == "homePage"][0]`;
 
-const EVENTS_QUERY = `*[_type == "allEvents" && startsAt >= $now] | order(startsAt desc)[0]`;
+const EVENTS_QUERY = `
+  *[_type == "allEvents" && startsAt >= $now]
+  | order(startsAt asc)[0]
+`;
 
 async function HomePage() {
   await connection();

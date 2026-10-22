@@ -7,16 +7,18 @@ export default function Loader() {
       <div className="relative aspect-2.5/1 w-75 sm:w-112.5">
         <Image
           src={logo}
-          alt="PROFC Logo"
+          alt="PROFC"
           fill
           priority
+          fetchPriority="high"
           className="object-contain grayscale contrast-125 opacity-40"
         />
         <Image
           src={logo}
-          alt=""
+          alt="PROFC"
           fill
           priority
+          fetchPriority="high"
           className="object-contain animate-reveal-color"
         />
       </div>

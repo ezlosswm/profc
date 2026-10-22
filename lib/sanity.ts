@@ -14,7 +14,7 @@ export async function sanityFetch<T>({
 }): Promise<T | null> {
   try {
     const response = await client.fetch<T>(query, params, {
-      next: { revalidate },
+      next: { revalidate: revalidate },
     });
 
     return response;
