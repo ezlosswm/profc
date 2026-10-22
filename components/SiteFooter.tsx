@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/public/images/Logo.webp";
-import FooterNav from "./FooterNav";
+import FooterNav from "./SiteFooterNav";
 import { Suspense } from "react";
 import { connection } from "next/server";
 

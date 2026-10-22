@@ -1,4 +1,4 @@
-import AllEvent from "@/components/Events";
+import AllEvent from "@/components/events/Events";
 import { createPageMetadata } from "@/lib/seo";
 import { Suspense } from "react";
 import Loader from "@/components/Loader";

@@ -1,5 +1,5 @@
-import Section from "./ui/section";
-import { SectionHeading } from "./ui/sectionheading";
+import Section from "../ui/section";
+import { SectionHeading } from "../ui/sectionheading";
 import type { Sponsor } from "@/types/types";
 
 type SponsorsProps = {

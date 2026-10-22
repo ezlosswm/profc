@@ -1,15 +1,12 @@
-import Section from "./ui/section";
-import Hero from "./Hero";
+import Section from "../ui/section";
+import Hero from "../Hero";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/lib/sanity";
 import type { Event, ImageAsset } from "@/types/types";
 import { ArrowRight, Calendar, MapPin } from "lucide-react";
-import { Button } from "./ui/button";
-import {
-  sortEventsByDescendingTime,
-  sortEventsByAscendingTime,
-} from "@/lib/sort";
+import { Button } from "../ui/button";
+import { sortEventsByDescendingTime } from "@/lib/sort";
 import { connection } from "next/server";
 
 const HEROIMAGE_QUERY = `*[_type == "homePage"][0].heroImage`;

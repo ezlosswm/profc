@@ -1,7 +1,7 @@
 import { createPageMetadata } from "@/lib/seo";
-import ContactPage from "@/components/Contact";
-
-export const instant = false;
+import ContactPage from "@/components/contact/Contact";
+import { Suspense } from "react";
+import Loader from "@/components/Loader";
 
 export const metadata = createPageMetadata({
   title: "Contact",
@@ -11,6 +11,10 @@ export const metadata = createPageMetadata({
 });
 
 function Contact() {
-  return <ContactPage />;
+  return (
+    <Suspense fallback={<Loader />}>
+      <ContactPage />;
+    </Suspense>
+  );
 }
 export default Contact;

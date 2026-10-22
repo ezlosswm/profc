@@ -1,4 +1,4 @@
-import HomePage from "@/components/Home";
+import HomePage from "@/components/home/Home";
 import Loader from "@/components/Loader";
 import { Suspense } from "react";
 

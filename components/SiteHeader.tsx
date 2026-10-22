@@ -34,39 +34,37 @@ export function SiteHeader() {
         aria-label="Main menu"
         className="hidden h-16 w-full mx-auto max-w-7xl px-5 md:px-8 md:flex items-center justify-between"
       >
-        <div className="flex gap-24 flex-row-reverse justify-between">
-          <ul className="flex items-center gap-2">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <li key={link.href}>
-                  <Button
-                    className={
-                      isActive
-                        ? "text-white underline underline-offset-6 decoration-primary"
-                        : ""
-                    }
-                    href={link.href}
-                    variant="nav"
-                  >
-                    {link.title}
-                  </Button>
-                </li>
-              );
-            })}
-          </ul>
+        <Link aria-label="PROFC Belize Home" href="/">
+          <Image
+            src={logo}
+            alt="PROFC logo"
+            width={150}
+            height={50}
+            priority
+            className="w-37.5 h-12.5"
+          />
+        </Link>
 
-          <Link aria-label="PROFC Belize Home" href="/">
-            <Image
-              src={logo}
-              alt="PROFC logo"
-              width={150}
-              height={50}
-              priority
-              className="w-37.5 h-12.5"
-            />
-          </Link>
-        </div>
+        <ul className="flex items-center gap-2">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Button
+                  className={
+                    isActive
+                      ? "text-white underline underline-offset-6 decoration-primary"
+                      : ""
+                  }
+                  href={link.href}
+                  variant="nav"
+                >
+                  {link.title}
+                </Button>
+              </li>
+            );
+          })}
+        </ul>
 
         <Button href="/contact">Get tickets</Button>
       </nav>

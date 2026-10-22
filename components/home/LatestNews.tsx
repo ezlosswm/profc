@@ -3,7 +3,7 @@ import Section from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/sectionheading";
 import { newsArticles } from "@/data/news";
 import { ArrowRight } from "lucide-react";
-import { NewsCard } from "./NewsCard";
+import { NewsCard } from "../NewsCard";
 
 export function LatestNews() {
   return (

@@ -1,9 +1,9 @@
 import Hero from "@/components/Hero";
 import Image from "next/image";
 import hero from "@/public/images/hero-sample.webp";
-import Marquee from "@/components/MarqueeBanner";
-import SponsorsAndPartners from "@/components/SponsorsAndPartners";
-import { LatestNews } from "@/components/LatestNews";
+import Marquee from "@/components/home/MarqueeBanner";
+import SponsorsAndPartners from "@/components/home/SponsorsAndPartners";
+import { LatestNews } from "@/components/home/LatestNews";
 import { Suspense } from "react";
 import { Event, HomePageData } from "@/types/types";
 import { sanityFetch } from "@/lib/sanity";

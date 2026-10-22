@@ -1,8 +1,8 @@
 import Section from "@/components/ui/section";
-import { client } from "@/sanity/client";
 import { ChampionsPageData } from "@/types/types";
 import { createPageMetadata } from "@/lib/seo";
-import ChampionsInteractive from "@/components/ChampionsInteractive";
+import ChampionsInteractive from "@/components/champions/ChampionsInteractive";
+import { sanityFetch } from "@/lib/sanity";
 
 export const metadata = createPageMetadata({
   title: "MMA Champions & Titleholders | PROFC Belize",
@@ -12,26 +12,12 @@ export const metadata = createPageMetadata({
 });
 
 const CHAMPIONS_QUERY = `*[_type == "championsPage"][0]`;
-const options = {
-  next: { revalidate: 30 },
-};
 
 async function Champions() {
-  let championsPageData: ChampionsPageData | null = null;
-
-  try {
-    championsPageData = await client.fetch<ChampionsPageData>(
-      CHAMPIONS_QUERY,
-      {},
-      options,
-    );
-  } catch (error) {
-    console.error("Champions page query failed: ", (error as Error).message);
-  }
-
-  if (!championsPageData) {
-    return;
-  }
+  const championsPageData = await sanityFetch<ChampionsPageData>({
+    query: CHAMPIONS_QUERY,
+    errorMessage: "Failed to get champion page data",
+  });
 
   return (
     <main className="bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
@@ -49,10 +35,10 @@ async function Champions() {
           </h1>
 
           <p className="mt-6 max-w-sm text-muted-foreground">
-            {championsPageData.description}
+            {championsPageData!.description}
           </p>
         </div>
-        <ChampionsInteractive champions={championsPageData.champions} />
+        <ChampionsInteractive champions={championsPageData!.champions} />
       </Section>
     </main>
   );
