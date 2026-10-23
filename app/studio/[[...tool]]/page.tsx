@@ -7,11 +7,36 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+import { Suspense } from "react";
+import { connection } from "next/server";
 import { NextStudio } from "next-sanity/studio";
 import config from "../../../sanity.config";
+import type { Metadata, Viewport } from "next";
 
-export { metadata, viewport } from "next-sanity/studio";
+export const metadata: Metadata = {
+  referrer: "same-origin",
+  robots: "noindex",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+export function generateStaticParams() {
+  return [{ tool: [] }];
+}
+
+async function StudioContent() {
+  await connection();
+  return <NextStudio config={config} />;
+}
 
 export default function StudioPage() {
-  return <NextStudio config={config} />;
+  return (
+    <Suspense>
+      <StudioContent />
+    </Suspense>
+  );
 }

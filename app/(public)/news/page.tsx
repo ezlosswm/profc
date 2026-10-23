@@ -2,6 +2,7 @@ import { NewsCard } from "@/components/NewsCard";
 import Section from "@/components/ui/section";
 import { newsArticles } from "@/data/news";
 import { createPageMetadata } from "@/lib/seo";
+
 export const metadata = createPageMetadata({
   title: "MMA News & Updates",
   description:
