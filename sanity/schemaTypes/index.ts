@@ -6,6 +6,7 @@ import { homePageType } from "./homePageType";
 import { fighterType } from "./fighters";
 import { fightsType } from "./fights";
 import { fightResult } from "./fightResult";
+import { newsType } from "./newsType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,5 +17,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     fighterType,
     fightResult,
     homePageType,
+    newsType,
   ],
 };

@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from "@portabletext/react";
 export type ImageAsset = {
   _type: string;
   asset: {
@@ -59,4 +60,14 @@ export type HomePageData = {
   upcomingEvent: Event[];
   sponsor: Sponsor[];
   heroImage: ImageAsset;
+};
+
+export type NewsArticle = {
+  _id: string;
+  headline: string;
+  summary: string;
+  publicationDate: string;
+  slug: SlugData;
+  headlineImage: ImageAsset;
+  content: PortableTextBlock;
 };

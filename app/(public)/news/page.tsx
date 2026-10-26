@@ -1,7 +1,8 @@
 import { NewsCard } from "@/components/NewsCard";
 import Section from "@/components/ui/section";
-import { newsArticles } from "@/data/news";
+import { sanityFetch } from "@/lib/sanity";
 import { createPageMetadata } from "@/lib/seo";
+import { NewsArticle } from "@/types/types";
 
 export const metadata = createPageMetadata({
   title: "MMA News & Updates",
@@ -11,7 +12,14 @@ export const metadata = createPageMetadata({
   path: "/news",
 });
 
-export default function News() {
+const NEWS_QUERY = `*[_type == "news"]`;
+
+export default async function News() {
+  const news = await sanityFetch<NewsArticle[]>({
+    query: NEWS_QUERY,
+    errorMessage: "Unable to get the news, call Jules Vasquez",
+  });
+
   return (
     <main aria-labelledby="news-title">
       <Section className="min-h-[80vh] bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
@@ -25,8 +33,9 @@ export default function News() {
           Announcements, fight cards and results from PROFC Belize
         </p>
         <div className="mt-10 grid gap-x-8 gap-y-12 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
-          {newsArticles.map((article) => (
-            <NewsCard key={article.slug} {...article} />
+          {news!.map((article) => (
+            // <span key={article.slug.current}>{article.headline}</span>
+            <NewsCard key={article.slug.current} article={article} />
           ))}
         </div>
       </Section>
