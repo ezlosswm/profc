@@ -8,6 +8,7 @@ import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import { Button } from "../ui/button";
 import { sortEventsByDescendingTime } from "@/lib/sort";
 import { connection } from "next/server";
+import Link from "next/link";
 
 const HEROIMAGE_QUERY = `*[_type == "homePage"][0].heroImage`;
 const ALL_EVENTS_QUERY = `
@@ -99,7 +100,10 @@ export default async function AllEvent() {
             .slice(1)
             .map((event, index) => (
               <li key={index + 1}>
-                <article className="flex h-full flex-col border border-border bg-background">
+                <Link
+                  href={`/events/${event.slug.current}`}
+                  className="flex h-full flex-col border border-border bg-background"
+                >
                   <Image
                     src={urlFor(event.image!.asset)
                       .width(800)
@@ -125,11 +129,11 @@ export default async function AllEvent() {
                       </li>
                       <li className="flex items-center gap-2">
                         <MapPin className="text-primary size-4 shrink-0" />
-                        {event.dateLabel}
+                        {event.venue}, {event.city}
                       </li>
                     </ul>
                   </div>
-                </article>
+                </Link>
               </li>
             ))}
         </ul>

@@ -29,7 +29,15 @@ export const championsPageType = defineType({
               name: "division",
               title: "Division",
               type: "string",
-              placeholder: "Featherweight",
+              options: {
+                list: [
+                  "Strawweight",
+                  "Flyweight",
+                  "Featherweight",
+                  "Bantamweight",
+                  "Lightweight",
+                ],
+              },
             }),
             defineField({
               name: "name",

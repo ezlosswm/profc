@@ -23,13 +23,15 @@ export const allEventsType = defineType({
     defineField({
       name: "redCorner",
       title: "Red Corner",
-      type: "string",
+      type: "reference",
+      to: [{ type: "fighter" }],
       description: "Fighter One",
     }),
     defineField({
       name: "blueCorner",
       title: "Blue Corner",
-      type: "string",
+      type: "reference",
+      to: [{ type: "fighter" }],
       description: "Fighter Two",
     }),
     defineField({
