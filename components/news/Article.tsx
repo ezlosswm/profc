@@ -1,8 +1,11 @@
-import { NewsArticle } from "@/types/types";
+import { ImageAsset, NewsArticle } from "@/types/types";
 import Section from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { formatNewsPublicationdate } from "@/lib/formatter";
+import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
 type ArticleProps = {
   newsArticle: NewsArticle;
@@ -31,9 +34,63 @@ export function Article({ newsArticle }: ArticleProps) {
             <p className="mt-6 text-xl text-muted-foreground">
               {newsArticle!.summary}
             </p>
+
+            <PortableText value={newsArticle.content} components={components} />
           </Section>
         </header>
       </article>
     </main>
   );
 }
+
+const components: PortableTextComponents = {
+  block: {
+    normal: ({ children }) => (
+      <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+        {children}
+      </p>
+    ),
+    h2: ({ children }) => (
+      <h2 className="mt-14 font-display text-4xl uppercase leading-none md:text-5xl">
+        {children}
+      </h2>
+    ),
+  },
+  marks: {
+    strong: ({ children }) => (
+      <strong className="font-semibold text-foreground">{children}</strong>
+    ),
+    em: ({ children }) => <em>{children}</em>,
+    link: ({ value, children }) => {
+      const href: string = value?.href ?? "";
+      return (
+        <Button
+          href={href}
+          variant="link"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-base p-0! italic underline underline-offset-4"
+        >
+          {children}
+        </Button>
+      );
+    },
+  },
+  types: {
+    image: ({ value }: { value: ImageAsset }) => {
+      if (!value) return null;
+      return (
+        <figure className="my-10">
+          <Image
+            src={urlFor(value.asset).width(1920).height(1080).url()}
+            alt={value.asset._ref ?? ""}
+            width={1920}
+            height={1080}
+            className="w-full object-cover"
+            loading="lazy"
+          />
+        </figure>
+      );
+    },
+  },
+};

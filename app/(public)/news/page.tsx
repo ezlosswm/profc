@@ -10,6 +10,9 @@ export const metadata = createPageMetadata({
     "Stay up to date with PROFC Belize MMA news, upcoming fight announcements, event results, fighter updates, and championship developments in Belize.",
 
   path: "/news",
+  openGraph: {
+    image: "/images/Logo.webp",
+  },
 });
 
 const NEWS_QUERY = `*[_type == "news"]`;
@@ -34,7 +37,6 @@ export default async function News() {
         </p>
         <div className="mt-10 grid gap-x-8 gap-y-12 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
           {news!.map((article) => (
-            // <span key={article.slug.current}>{article.headline}</span>
             <NewsCard key={article.slug.current} article={article} />
           ))}
         </div>

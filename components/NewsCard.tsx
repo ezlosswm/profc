@@ -8,6 +8,7 @@ import { formatNewsPublicationdate } from "@/lib/formatter";
 type NewsCardProps = {
   article: NewsArticle;
 };
+
 export function NewsCard({ article }: NewsCardProps) {
   return (
     <article
