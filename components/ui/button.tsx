@@ -9,12 +9,13 @@ type BaseProps = {
   className?: string;
 };
 
-type LinkProps = BaseProps & {
-  href: string;
-  type?: never;
-  onClick?: never;
-  disabled?: never;
-};
+type LinkProps = BaseProps &
+  Omit<ComponentProps<typeof Link>, "children" | "className"> & {
+    href: string;
+    type?: never;
+    onClick?: never;
+    disabled?: never;
+  };
 
 type NativeButtonProps = BaseProps &
   Omit<ComponentProps<"button">, "children" | "className"> & {
