@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import { NewsArticle } from "@/types/types";
 import { formatNewsPublicationdate } from "@/lib/formatter";
+import Link from "next/link";
 
 type NewsCardProps = {
   article: NewsArticle;
@@ -11,15 +12,16 @@ type NewsCardProps = {
 
 export function NewsCard({ article }: NewsCardProps) {
   return (
-    <article
+    <Link
       id={article.slug.current}
+      href={`news/${article.slug.current}`}
       className="group flex h-full scroll-mt-24 flex-col"
     >
-      <div className="w-full">
+      <div className="w-full overflow-hidden">
         <Image
           src={urlFor(article.headlineImage).width(1920).height(1080).url()}
           alt={`${article.headline} headliner`}
-          className="object-cover w-full aspect-16/10"
+          className="group-hover:scale-105 object-cover w-full aspect-16/10 transition-transform ease-in-out duration-500"
           loading="lazy"
           width={1920}
           height={1080}
@@ -35,9 +37,8 @@ export function NewsCard({ article }: NewsCardProps) {
       <p className="mt-3 text-foreground/75">{article.summary}</p>
 
       <Button
-        href={`news/${article.slug.current}`}
         variant="link"
-        className="mt-auto pt-5 justify-start px-0! gap-2 group"
+        className="mt-auto pt-5 justify-start group-hover:text-primary px-0! gap-2"
       >
         <span>Read article</span>
         <ArrowRightIcon
@@ -45,6 +46,6 @@ export function NewsCard({ article }: NewsCardProps) {
           className="group-hover:translate-x-0.5 ease-out size-4"
         />
       </Button>
-    </article>
+    </Link>
   );
 }

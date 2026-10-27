@@ -43,7 +43,7 @@ export default async function AllEvent() {
         >
           All Events
         </h2>
-        <article className="mx-auto max-w-7xl mt-10 border border-border bg-background grid md:grid-cols-12">
+        <article className="mx-auto max-w-7xl mt-10 overflow-hidden group border border-border bg-background grid md:grid-cols-12">
           <Image
             src={urlFor(sortEventsByDescendingTime(allEvents!)[0].image!.asset)
               .width(1920)
@@ -53,7 +53,7 @@ export default async function AllEvent() {
             width={1920}
             height={1080}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
-            className="aspect-video size-full object-cover md:col-span-7 md:aspect-auto md:min-h-80"
+            className="aspect-video size-full group-hover:scale-105 transition-transform ease-in-out duration-500 object-cover md:col-span-7 md:aspect-auto md:min-h-80"
             loading="lazy"
           />
           <div className="flex flex-col p-6 md:col-span-5 md:p-10">
@@ -102,7 +102,7 @@ export default async function AllEvent() {
               <li key={index + 1}>
                 <Link
                   href={`/events/${event.slug.current}`}
-                  className="flex h-full flex-col border border-border bg-background"
+                  className="flex h-full flex-col group overflow-hidden border border-border bg-background"
                 >
                   <Image
                     src={urlFor(event.image!.asset)
@@ -113,7 +113,7 @@ export default async function AllEvent() {
                     width={660}
                     height={412}
                     loading="lazy"
-                    className="aspect-16/10 w-full object-fill"
+                    className="aspect-16/10 group-hover:scale-105 transition-transform ease-in-out duration-500 w-full object-fill"
                   />
                   <div className="flex flex-1 flex-col p-6">
                     <span className="text-xs font-medium text-muted-foreground">

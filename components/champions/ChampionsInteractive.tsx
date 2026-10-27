@@ -21,7 +21,7 @@ export default function ChampionsInteractive({
 
   return (
     <>
-      <div className="lg:col-span-4 lg:row-span-3 lg:row-start-2 hidden sm:block">
+      <div className="lg:col-span-4 lg:row-span-3 overflow-hidden lg:row-start-2 hidden sm:block">
         <Image
           src={urlFor(selectedChampion.image!.asset)
             .width(800)
@@ -31,7 +31,7 @@ export default function ChampionsInteractive({
           height={1067}
           loading="lazy"
           alt={`Champion of the ${selectedChampion.division} division.`}
-          className="mt-10 aspect-3/4 w-full object-cover object-center"
+          className="mt-10 aspect-3/4 w-full object-cover object-center transition-transform duration-500 ease-in-out hover:scale-105"
         />
       </div>
 
