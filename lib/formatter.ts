@@ -1,7 +1,7 @@
-import type { Event } from "@/types/types";
+import type { FightEvent } from "@/types/types";
 
-export function formatToMarqueeArray(event: Event) {
-  const item = `${event.name} · ${event.dateLabel} · ${event.venue}, ${event.city}`;
+export function formatToMarqueeArray(event: FightEvent) {
+  const item = `${event.name} · ${formatDateTime(event.startsAt)} · ${event.venue}, ${event.city}`;
   return Array.from({ length: 6 }, () => item);
 }
 

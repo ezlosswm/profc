@@ -11,11 +11,10 @@ export const metadata = createPageMetadata({
   path: "/events",
 });
 
-export async function Events() {
+export default async function Events() {
   return (
     <Suspense fallback={<Loader />}>
       <AllEvent />
     </Suspense>
   );
 }
-export default Events;

@@ -1,7 +1,6 @@
 import { type SchemaTypeDefinition } from "sanity";
 import { aboutPageType } from "./aboutPageType";
 import { championsPageType } from "./championsPageType";
-import { allEventsType } from "./allEventsType";
 import { homePageType } from "./homePageType";
 import { fighterType } from "./fighters";
 import { fightsType } from "./fights";
@@ -12,7 +11,6 @@ import { eventType } from "./events";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     aboutPageType,
-    allEventsType,
     championsPageType,
     eventType,
     fightsType,

@@ -1,6 +1,6 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import type { ImageAsset, Event, FightEvent } from "@/types/types";
+import type { ImageAsset, FightEvent } from "@/types/types";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
 import Section from "./ui/section";
@@ -88,7 +88,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
             >
               Get tickets
               <span className="group-hover:translate-x-0.5 transition-transform ease-out">
-                <ArrowRight className="size-4" />
+                <ArrowRight aria-hidden="true" className="size-4" />
               </span>
             </Button>
             <Button

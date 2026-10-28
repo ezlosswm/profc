@@ -2,23 +2,19 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
-
 import Loader from "@/components/Loader";
 import { Article } from "@/components/news/Article";
 import { sanityFetch } from "@/lib/sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { createPageMetadata } from "@/lib/seo";
 import { NewsArticle } from "@/types/types";
+import { NEWS_ARTICLE_QUERY } from "@/lib/queries/queries";
 
 export const instant = false;
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
-
-const NEWS_ARTICLE_QUERY = `
-  *[_type == "news" && slug.current == $slug][0]
-`;
 
 async function getNewsArticle(slug: string) {
   return sanityFetch<NewsArticle>({

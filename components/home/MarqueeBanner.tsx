@@ -1,8 +1,8 @@
-import type { Event } from "@/types/types";
+import type { FightEvent } from "@/types/types";
 import { formatToMarqueeArray } from "@/lib/formatter";
 
 type MarqueeProps = {
-  event: Event;
+  event: FightEvent;
 };
 
 export default async function Marquee({ event }: MarqueeProps) {

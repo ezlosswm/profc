@@ -18,7 +18,10 @@ export function Article({ newsArticle }: ArticleProps) {
         <header className="bg-muted-background pb-12 pt-28 md:pb-16 md:pt-36">
           <Section>
             <Button href="/news" variant="link" className="group gap-2">
-              <ArrowLeft className="size-4 shrink-0 group-hover:-translate-x-0.5" />
+              <ArrowLeft
+                aria-hidden="true"
+                className="size-4 shrink-0 group-hover:-translate-x-0.5"
+              />
               <span>All news</span>
             </Button>
 

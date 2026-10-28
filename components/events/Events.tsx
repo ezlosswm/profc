@@ -9,24 +9,22 @@ import { Button } from "../ui/button";
 import { sortEventsByAscendingTime } from "@/lib/sort";
 import Link from "next/link";
 import { formatDateTime } from "@/lib/formatter";
+import { getUpcomingEvent } from "@/lib/filter";
+import { EVENTS_QUERY } from "@/lib/queries/queries";
 
 type EventsProps = {
   events: FightEvent[];
 };
 
-const EVENT_QUERY = `*[_type == "events"]`;
-
-export default async function AllEvent() {
+export default async function AllEvents() {
   const events = await sanityFetch<FightEvent[]>({
-    query: EVENT_QUERY,
+    query: EVENTS_QUERY,
     errorMessage: "Unable to get list of events",
   });
 
-  const upcomingEvent = events!.filter((event) => event.status === "upcoming");
-
   return (
     <main className="bg-muted-background">
-      <Hero event={sortEventsByAscendingTime(upcomingEvent)[0]} />
+      <Hero event={sortEventsByAscendingTime(getUpcomingEvent(events!))[0]} />
 
       <Section aria-labelledby="all-events-title" className="py-20 md:py-28">
         <h2
@@ -151,12 +149,18 @@ function PastEvents({ events }: EventsProps) {
                   </h4>
                   <ul className="mt-auto space-y-2 pt-5 text-sm text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <Calendar className="text-primary size-4 shrink-0" />
+                      <Calendar
+                        aria-hidden="true"
+                        className="text-primary size-4 shrink-0"
+                      />
                       {formatDateTime(event.startsAt)}
                     </li>
 
                     <li className="flex items-center gap-2">
-                      <MapPin className="text-primary size-4 shrink-0" />
+                      <MapPin
+                        aria-hidden="true"
+                        className="text-primary size-4 shrink-0"
+                      />
                       {event.venue}, {event.city}
                     </li>
                   </ul>

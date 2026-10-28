@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { urlFor } from "@/sanity/image";
+import { urlFor } from "@/sanity/lib/image";
 import { ChampionsPageData } from "@/types/types";
 import { useState } from "react";
 

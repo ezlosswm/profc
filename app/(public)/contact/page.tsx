@@ -10,11 +10,10 @@ export const metadata = createPageMetadata({
   path: "/contact",
 });
 
-function Contact() {
+export default function Contact() {
   return (
     <Suspense fallback={<Loader />}>
       <ContactPage />;
     </Suspense>
   );
 }
-export default Contact;

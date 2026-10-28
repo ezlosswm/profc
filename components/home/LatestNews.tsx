@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Section from "@/components/ui/section";
 import { SectionHeading } from "@/components/ui/sectionheading";
-import { newsArticles } from "@/data/news";
 import { ArrowRight } from "lucide-react";
 import { NewsCard } from "../NewsCard";
 import type { NewsArticle } from "@/types/types";
 import { sanityFetch } from "@/lib/sanity";
-
-const NEWS_QUERY = `*[_type == "news"]`;
+import { NEWS_QUERY } from "@/lib/queries/queries";
 
 export async function LatestNews() {
   const news = await sanityFetch<NewsArticle[]>({
