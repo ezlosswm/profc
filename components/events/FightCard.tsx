@@ -126,7 +126,7 @@ export function FightCard({ fight }: FightProps) {
               <p className="text-xs font-medium text-muted-foreground">
                 Blue corner
               </p>
-              <div className="mt-1 flex flex-wrap items-center gap-2">
+              <div className="mt-1 justify-end flex flex-wrap items-center gap-2">
                 <p className="font-heading uppercase leading-none text-4xl md:text-5xl">
                   {getLastname(fight.blueCorner.name)}
                 </p>

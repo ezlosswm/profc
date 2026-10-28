@@ -5,6 +5,7 @@ import { urlFor } from "@/sanity/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, MapPin } from "lucide-react";
 import { formatDateTime } from "@/lib/formatter";
+import YouTubeBackground from "../YouTubeBackground";
 
 type BannerProps = {
   event: FightEvent;
@@ -16,16 +17,18 @@ export function Banner({ event }: BannerProps) {
       aria-labelledby="event-title"
       className="relative isolate overflow-hidden bg-background"
     >
-      <Image
+      {/* <Image
         src={urlFor(event.image!.asset).width(1920).height(1080).url()}
         width={1920}
         height={1080}
         alt={`Event flyer for ${event.name}`}
         className="absolute inset-0 -z-20 size-full object-cover"
-      />
+      /> */}
+      {/* Placeholder for future events */}
+      <YouTubeBackground videoId="Kwk90VoBjXQ" />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-background/70"
+        className="absolute inset-0 -z-10 bg-background/50"
       />
       <Section className="min-h-[70vh] mx-auto flex justify-end pt-28 pb-16 md:pb-20 flex-col">
         <Button
