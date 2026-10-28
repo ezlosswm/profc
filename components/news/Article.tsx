@@ -16,7 +16,7 @@ export function Article({ newsArticle }: ArticleProps) {
     <main className="min-h-[80vh] relative">
       <article aria-labelledby="article-title">
         <header className="bg-muted-background pb-12 pt-28 md:pb-16 md:pt-36">
-          <Section>
+          <Section className="max-w-3xl!">
             <Button href="/news" variant="link" className="group gap-2">
               <ArrowLeft
                 aria-hidden="true"
@@ -25,25 +25,21 @@ export function Article({ newsArticle }: ArticleProps) {
               <span>All news</span>
             </Button>
 
-            <span className="mt-10 flex flex-wrap items-center gap-x-3 text-sm font-medium text-muted-foreground">
-              {formatDateTime(newsArticle!.publicationDate)}
-            </span>
             <h1
               id="article-title"
-              className="mt-4 font-heading text-5xl uppercase md:text-7xl leading-[0.95]"
+              className="mt-10 font-heading text-5xl uppercase md:text-7xl leading-[0.95]"
             >
               {newsArticle!.headline}
             </h1>
             {newsArticle.author ? (
-              <span className="text-sm text-muted-foreground">
-                {newsArticle.author}
-              </span>
+              <div className="mt-3 text-sm items-center text-muted-foreground flex flex-wrap gap-3">
+                <span>by {newsArticle.author}</span>
+                <span>·</span>
+                <span>{formatDateTime(newsArticle!.publicationDate)}</span>
+              </div>
             ) : (
               <></>
             )}
-            <p className="mt-6 text-xl text-muted-foreground">
-              {newsArticle!.summary}
-            </p>
 
             <PortableText value={newsArticle.content} components={components} />
           </Section>
@@ -61,9 +57,14 @@ const components: PortableTextComponents = {
       </p>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-14 font-display text-4xl uppercase leading-none md:text-5xl">
+      <h2 className="mt-14 font-heading text-4xl uppercase leading-[0.9] md:text-5xl">
         {children}
       </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="mt-10 font-heading text-2xl uppercase leading-[0.9] tracking-wider md:text-3xl">
+        {children}
+      </h3>
     ),
   },
   marks: {
