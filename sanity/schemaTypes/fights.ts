@@ -17,8 +17,10 @@ type FightDocument = {
 
 export const fightsType = defineType({
   name: "fight",
-  title: "Fight",
+  title: "Fights",
   type: "document",
+  description:
+    "WARNING: DO NOT EDIT, FIGHTS CREATED HERE ARE NOT DISPLAYED IN EVENTS SECTIONS",
   fields: [
     defineField({
       name: "redCorner",

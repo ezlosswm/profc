@@ -3,6 +3,7 @@ import { createPageMetadata } from "@/lib/seo";
 import { Suspense } from "react";
 import Loader from "@/components/Loader";
 
+// TODO: Add image for metadata
 export const metadata = createPageMetadata({
   title: "Upcoming MMA Events in Belize | PROFC Belize",
   description:

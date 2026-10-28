@@ -3,7 +3,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { Button } from "./ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import { NewsArticle } from "@/types/types";
-import { formatNewsPublicationdate } from "@/lib/formatter";
+import { formatDateTime } from "@/lib/formatter";
 import Link from "next/link";
 
 type NewsCardProps = {
@@ -29,7 +29,7 @@ export function NewsCard({ article }: NewsCardProps) {
       </div>
 
       <span className="mt-5 text-xs font-medium text-muted-foreground">
-        {formatNewsPublicationdate(article.publicationDate)}
+        {formatDateTime(article.publicationDate)}
       </span>
       <h3 className="mt-2 font-heading text-2xl uppercase leading-tight md:text-3xl">
         {article.headline}

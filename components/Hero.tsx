@@ -1,14 +1,15 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import type { ImageAsset, Event } from "@/types/types";
+import type { ImageAsset, Event, FightEvent } from "@/types/types";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
 import Section from "./ui/section";
 import { urlFor } from "@/sanity/image";
+import { formatDateTime } from "@/lib/formatter";
 
 type HeroProps = {
-  heroImage: ImageAsset;
-  event: Event;
+  heroImage?: ImageAsset;
+  event: FightEvent;
 };
 
 export default async function Hero({ heroImage, event }: HeroProps) {
@@ -17,16 +18,34 @@ export default async function Hero({ heroImage, event }: HeroProps) {
       aria-labelledby="hero-title"
       className="relative min-h-[92vh] overflow-hidden isolate bg-background"
     >
-      {/* TODO: Fix image alt text */}
       <div className="size-full">
-        <Image
-          src={urlFor(heroImage).width(1920).height(1080).auto("format").url()}
-          alt="Upcoming event flyer"
-          width={1920}
-          height={1080}
-          priority
-          className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
-        />
+        {heroImage ? (
+          <Image
+            src={urlFor(heroImage)
+              .width(1920)
+              .height(1080)
+              .auto("format")
+              .url()}
+            alt={`${event.name} headlining fight.`}
+            width={1920}
+            height={1080}
+            priority
+            className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
+          />
+        ) : (
+          <Image
+            src={urlFor(event.image.asset)
+              .width(1920)
+              .height(1080)
+              .auto("format")
+              .url()}
+            alt={`${event.name} headlining fight.`}
+            width={1920}
+            height={1080}
+            priority
+            className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
+          />
+        )}
       </div>
       <div
         className="absolute inset-0 -z-10 bg-background/60"
@@ -43,7 +62,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
         </h1>
 
         <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
-          <p>{event.dateLabel}</p>
+          <p>{formatDateTime(event.startsAt)}</p>
 
           <div
             id="divider"

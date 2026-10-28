@@ -2,7 +2,7 @@ import { ImageAsset, NewsArticle } from "@/types/types";
 import Section from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
-import { formatNewsPublicationdate } from "@/lib/formatter";
+import { formatDateTime } from "@/lib/formatter";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
@@ -23,7 +23,7 @@ export function Article({ newsArticle }: ArticleProps) {
             </Button>
 
             <span className="mt-10 flex flex-wrap items-center gap-x-3 text-sm font-medium text-muted-foreground">
-              {formatNewsPublicationdate(newsArticle!.publicationDate)}
+              {formatDateTime(newsArticle!.publicationDate)}
             </span>
             <h1
               id="article-title"

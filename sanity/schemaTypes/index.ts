@@ -7,12 +7,14 @@ import { fighterType } from "./fighters";
 import { fightsType } from "./fights";
 import { fightResult } from "./fightResult";
 import { newsType } from "./newsType";
+import { eventType } from "./events";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     aboutPageType,
     allEventsType,
     championsPageType,
+    eventType,
     fightsType,
     fighterType,
     fightResult,

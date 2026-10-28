@@ -12,7 +12,7 @@ const METHODS_WITH_TECHNIQUE = ["ko", "tko", "submission", "other"];
 
 export const fightResult = defineType({
   name: "fightResult",
-  title: "Official result",
+  title: "Official results",
   type: "object",
   fields: [
     defineField({

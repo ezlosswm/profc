@@ -5,11 +5,12 @@ export function formatToMarqueeArray(event: Event) {
   return Array.from({ length: 6 }, () => item);
 }
 
-export function formatNewsPublicationdate(dateStr: string): string {
-  const date = new Date(`${dateStr}T00:00:00`);
+export function formatDateTime(dateStr: string): string {
+  const date = new Date(dateStr);
 
   return Intl.DateTimeFormat("en-US", {
-    month: "short",
+    weekday: "long",
+    month: "long",
     day: "numeric",
     year: "numeric",
   }).format(date);
