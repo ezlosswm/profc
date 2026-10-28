@@ -23,6 +23,22 @@ export const SINGLE_EVENT_QUERY = `*[_type == "events" && slug.current == $slug]
       country,
       record,
       weightClass
+    },
+    result {
+      method,
+      technique,
+      round,
+      time,
+      winner-> {
+        _id,
+        name,
+        slug,
+        nickname,
+        image,
+        country,
+        record,
+        weightClass
+      }
     }
   }
 }`;

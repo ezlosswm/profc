@@ -22,6 +22,11 @@ export const newsType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "author",
+      title: "Author",
+      type: "string",
+    }),
+    defineField({
       name: "headlineImage",
       title: "Headline Image",
       type: "image",

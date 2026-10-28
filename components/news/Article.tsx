@@ -34,6 +34,13 @@ export function Article({ newsArticle }: ArticleProps) {
             >
               {newsArticle!.headline}
             </h1>
+            {newsArticle.author ? (
+              <span className="text-sm text-muted-foreground">
+                {newsArticle.author}
+              </span>
+            ) : (
+              <></>
+            )}
             <p className="mt-6 text-xl text-muted-foreground">
               {newsArticle!.summary}
             </p>

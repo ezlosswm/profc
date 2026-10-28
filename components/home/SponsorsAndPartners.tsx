@@ -1,6 +1,8 @@
+import Image from "next/image";
 import Section from "../ui/section";
 import { SectionHeading } from "../ui/sectionheading";
 import type { Sponsor } from "@/types/types";
+import { urlFor } from "@/sanity/lib/image";
 
 type SponsorsProps = {
   sponsors: Sponsor[];
@@ -12,15 +14,19 @@ export default async function SponsorsAndPartners({ sponsors }: SponsorsProps) {
       <Section aria-labelledby="sponsors-title">
         <SectionHeading id="sponsors-title" heading="Sponsors & Partners" />
 
-        <ul className="mt-10 grid grid-cols-2 gap-px divide-x divide-y divide-border border border-border lg:grid-cols-4">
+        <ul className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {sponsors.map((sponsor) => (
             <li
               key={sponsor.sponsorName}
-              className="flex flex-col items-center justify-center h-32 md:h-40 text-center px-4"
+              className="relative flex items-center justify-center w-full h-32 md:h-40 bg-white/5 text-center"
             >
-              <span className="text-base font-semibold md:text-lg">
-                {sponsor.sponsorName}
-              </span>
+              <Image
+                src={urlFor(sponsor.sponsorImage).auto("format").url()}
+                fill
+                loading="lazy"
+                alt={sponsor.sponsorName}
+                className="object-cover object-center"
+              />
             </li>
           ))}
         </ul>

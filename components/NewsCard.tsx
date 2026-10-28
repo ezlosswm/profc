@@ -19,12 +19,12 @@ export function NewsCard({ article }: NewsCardProps) {
     >
       <div className="w-full overflow-hidden">
         <Image
-          src={urlFor(article.headlineImage).width(1920).height(1080).url()}
+          src={urlFor(article.headlineImage).width(500).height(500).url()}
           alt={`${article.headline} headliner`}
-          className="group-hover:scale-105 object-cover w-full aspect-16/10 transition-transform ease-in-out duration-500"
+          className="group-hover:scale-105 object-cover object-center w-full aspect-16/10 transition-transform ease-in-out duration-500"
           loading="lazy"
-          width={1920}
-          height={1080}
+          width={500}
+          height={500}
         />
       </div>
 

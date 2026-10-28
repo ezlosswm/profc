@@ -1,4 +1,4 @@
-import type { Fight } from "@/types/types";
+import { FIGHT_METHODS, type Fight, type FightMethod } from "@/types/types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -9,6 +9,10 @@ type FightProps = {
 function getLastname(name: string): string {
   const [, lastName] = name.split(" ");
   return lastName;
+}
+
+function formatFightMethod(method: FightMethod): string {
+  return FIGHT_METHODS[method];
 }
 
 export function FightCard({ fight }: FightProps) {
@@ -27,106 +31,123 @@ export function FightCard({ fight }: FightProps) {
         <span>Rounds {fight.scheduledRounds}</span>
       </header>
       <div className="grid gap-5 p-5 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-8 md:p-8">
-        {/* Left */}
-        <div className="flex items-center gap-4 md:gap-5">
-          <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
-            <Image
-              src={urlFor(fight.redCorner.image.asset)
-                .width(200)
-                .height(200)
-                .url()}
-              loading="lazy"
-              width={200}
-              height={200}
-              alt={fight.redCorner.name}
-              className="object-cover object-top"
-            />
-          </div>
-
-          <div className="min-w-0 border-l-2 pl-4 border-primary">
-            <p className="text-xs font-medium text-muted-foreground">
-              Red corner
-            </p>
-
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              <p className="font-heading uppercase leading-none text-4xl md:text-5xl">
-                {getLastname(fight.redCorner.name)}
+        <div>
+          {fight.result?.winner?.name === fight.redCorner.name ? (
+            <span className="w-full inline-flex justify-start">
+              <p className="px-2 py-0.5 uppercase text-sm font-bold bg-primary text-white">
+                Winner
               </p>
+            </span>
+          ) : (
+            <></>
+          )}
+          {/* Left */}
+          <div className="flex items-center gap-4 md:gap-5 mt-3">
+            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
+              <Image
+                src={urlFor(fight.redCorner.image.asset)
+                  .width(200)
+                  .height(200)
+                  .url()}
+                loading="lazy"
+                width={200}
+                height={200}
+                alt={fight.redCorner.name}
+                className="object-cover object-top"
+              />
             </div>
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1.5">
-                <span>Country</span>
-                <span
-                  className="font-medium
-                            "
-                >
-                  {fight.redCorner.country?.name}
-                </span>
+
+            <div className="min-w-0 border-l-2 pl-4 border-primary">
+              <p className="text-xs font-medium text-muted-foreground">
+                Red corner
+              </p>
+
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <p className="font-heading uppercase leading-none text-4xl md:text-5xl">
+                  {getLastname(fight.redCorner.name)}
+                </p>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span>Record</span>
-                <span>
-                  {fight.redCorner.record.wins} -{" "}
-                  {fight.redCorner.record.losses} -{" "}
-                  {fight.redCorner.record.draws}
-                </span>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <span>Country</span>
+                  <span
+                    className="font-medium
+                            "
+                  >
+                    {fight.redCorner.country?.name}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span>Record</span>
+                  <span>
+                    {fight.redCorner.record.wins} -{" "}
+                    {fight.redCorner.record.losses} -{" "}
+                    {fight.redCorner.record.draws}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
         {/* Center */}
         <div className="flex items-center gap-4" aria-hidden="true">
           <span className="font-heading text-primary text-3xl md:text-5xl">
             VS
           </span>
         </div>
-
         {/* Right */}
-        <div className="flex items-center gap-4 md:gap-5 md:flex-row-reverse md:text-right">
-          <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
-            <Image
-              src={urlFor(fight.blueCorner.image.asset)
-                .width(200)
-                .height(200)
-                .auto("format")
-                .fit("crop")
-                .url()}
-              loading="lazy"
-              width={200}
-              height={200}
-              alt={fight.blueCorner.name}
-              className="object-cover object-top"
-            />
-          </div>
-
-          <div className="min-w-0 border-l-2 md:border-l-0 md:border-r-2 md:pl-0 pl-4 md:pr-4 border-muted-foreground">
-            <p className="text-xs font-medium text-muted-foreground">
-              Blue corner
-            </p>
-
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              <p className="font-heading uppercase leading-none text-4xl md:text-5xl">
-                {getLastname(fight.blueCorner.name)}
+        <div>
+          {fight.result?.winner?.name === fight.blueCorner.name ? (
+            <span className="w-full inline-flex justify-end">
+              <p className="px-2 py-0.5 uppercase text-sm font-bold bg-primary text-white">
+                Winner
               </p>
+            </span>
+          ) : (
+            <></>
+          )}
+          <div className="mt-3 flex items-center gap-4 md:gap-5 md:flex-row-reverse md:text-right">
+            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
+              <Image
+                src={urlFor(fight.blueCorner.image.asset)
+                  .width(200)
+                  .height(200)
+                  .auto("format")
+                  .fit("crop")
+                  .url()}
+                loading="lazy"
+                width={200}
+                height={200}
+                alt={fight.blueCorner.name}
+                className="object-cover object-top"
+              />
             </div>
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1.5">
-                <span>Country</span>
-                <span
-                  className="font-medium
-                            "
-                >
-                  {fight.blueCorner.country?.name}
-                </span>
+            <div className="min-w-0 border-l-2 md:border-l-0 md:border-r-2 md:pl-0 pl-4 md:pr-4 border-muted-foreground">
+              <p className="text-xs font-medium text-muted-foreground">
+                Blue corner
+              </p>
+              <div className="mt-1 flex flex-wrap items-center gap-2">
+                <p className="font-heading uppercase leading-none text-4xl md:text-5xl">
+                  {getLastname(fight.blueCorner.name)}
+                </p>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span>Record</span>
-                <span>
-                  {fight.blueCorner.record.wins} -{" "}
-                  {fight.blueCorner.record.losses} -{" "}
-                  {fight.blueCorner.record.draws}
-                </span>
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-bold">
+                    {fight.blueCorner.country?.code}{" "}
+                  </span>
+                  <span className="font-medium">
+                    {fight.blueCorner.country?.name}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <span>Record</span>
+                  <span>
+                    {fight.blueCorner.record.wins} -{" "}
+                    {fight.blueCorner.record.losses} -{" "}
+                    {fight.blueCorner.record.draws}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -139,7 +160,31 @@ export function FightCard({ fight }: FightProps) {
           </p>
         </footer>
       ) : (
-        <>{/* <span>winner: </span> */}</>
+        <footer className="border-t border-border px-5 py-4 md:px-8">
+          <div className="flex text-sm gap-x-3 items-center">
+            <span className="text-base text-primary uppercase font-black tracking-wide">
+              {formatFightMethod(fight.result!.method)}
+            </span>
+            {fight.result?.technique ? (
+              <>
+                <span className="text-muted-foreground">•</span>
+                <span className="text-muted-foreground">
+                  {fight.result?.technique}
+                </span>
+              </>
+            ) : (
+              <></>
+            )}
+            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground">
+              Round {fight.result?.round}
+            </span>
+            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground">
+              Official Time {fight.result?.time}
+            </span>
+          </div>
+        </footer>
       )}
     </article>
   );

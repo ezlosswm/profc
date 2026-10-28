@@ -1,5 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/react";
-import { Reference } from "sanity";
+
 export type ImageAsset = {
   _type: string;
   asset: {
@@ -54,6 +54,7 @@ export type NewsArticle = {
   _id: string;
   headline: string;
   summary: string;
+  author?: string;
   publicationDate: string;
   slug: SlugData;
   headlineImage: ImageAsset;
@@ -70,21 +71,31 @@ type WeightClass =
 
 type FightStatus = "upcoming" | "completed" | "cancelled";
 
-export type FightMethod =
-  | "ko"
-  | "tko"
-  | "submission"
-  | "decision"
-  | "draw"
-  | "no_contest"
-  | "dq"
-  | "other";
+export const FIGHT_METHODS = {
+  ko: "KO",
+  tko: "TKO",
+  submission: "Submission",
+  decision: "Decision",
+  draw: "Draw",
+  no_contest: "No contest",
+  dq: "DQ",
+  other: "Other",
+  technical_decision: "Technical decision",
+} as const;
 
-export type DecisionType = "unanimous" | "split" | "majority";
+export type FightMethod = keyof typeof FIGHT_METHODS;
+
+export const DECISION_TYPES = {
+  unanimous: "Unanimous",
+  split: "Split",
+  majority: "Majority",
+};
+
+export type DecisionType = keyof typeof DECISION_TYPES;
 
 type FightResult = {
   method: FightMethod;
-  winner?: Reference;
+  winner?: Fighter | null;
   technique?: string;
   round?: number;
 
