@@ -22,7 +22,8 @@ export default async function SponsorsAndPartners({ sponsors }: SponsorsProps) {
             >
               <Image
                 src={urlFor(sponsor.sponsorImage).auto("format").url()}
-                fill
+                width={200}
+                height={200}
                 loading="lazy"
                 alt={sponsor.sponsorName}
                 className="object-cover object-center"

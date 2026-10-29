@@ -11,8 +11,8 @@ export default async function NewsPage() {
   });
 
   return (
-    <main aria-labelledby="news-title">
-      <Section className="min-h-[80vh] bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
+    <main aria-labelledby="news-title" className="bg-muted-background">
+      <Section className="min-h-[80vh] pb-20 pt-32 md:pb-28 md:pt-40">
         <h1
           id="news-title"
           className="font-heading text-6xl uppercase md:text-7xl leading-[0.9]"

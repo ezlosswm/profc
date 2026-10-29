@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
 import type { ImageAsset, FightEvent } from "@/types/types";
 import { Button } from "./ui/button";
@@ -62,7 +62,10 @@ export default async function Hero({ heroImage, event }: HeroProps) {
         </h1>
 
         <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
-          <p>{formatDateTime(event.startsAt)}</p>
+          <div className="flex gap-2 items-center">
+            <Calendar aria-hidden="true" className="size-4 text-primary" />
+            <p>{formatDateTime(event.startsAt)}</p>
+          </div>
 
           <div
             id="divider"

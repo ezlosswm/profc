@@ -52,8 +52,8 @@ function ContactPage() {
   }
 
   return (
-    <main aria-labelledby="contact-title">
-      <Section className="min-h-[80vh] bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
+    <main aria-labelledby="contact-title" className="bg-muted-background">
+      <Section className="min-h-[80vh] pb-20 pt-32 md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <h1

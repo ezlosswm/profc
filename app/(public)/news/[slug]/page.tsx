@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = newsArticle.headline;
   const description =
-    newsArticle.summary?.trim() ||
+    `${newsArticle.summary?.trim()} by ${newsArticle.author?.trim()}` ||
     `Read the latest news and updates from PROFC Belize.`;
 
   const image = newsArticle.headlineImage

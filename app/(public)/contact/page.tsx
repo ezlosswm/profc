@@ -13,7 +13,7 @@ export const metadata = createPageMetadata({
 export default function Contact() {
   return (
     <Suspense fallback={<Loader />}>
-      <ContactPage />;
+      <ContactPage />
     </Suspense>
   );
 }

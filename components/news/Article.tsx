@@ -57,12 +57,12 @@ const components: PortableTextComponents = {
       </p>
     ),
     h2: ({ children }) => (
-      <h2 className="mt-14 font-heading text-4xl uppercase leading-[0.9] md:text-5xl">
+      <h2 className="mt-14 font-heading text-4xl uppercase leading-[1.1] md:text-5xl">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="mt-10 font-heading text-2xl uppercase leading-[0.9] tracking-wider md:text-3xl">
+      <h3 className="mt-10 font-heading text-2xl uppercase leading-[1.1] tracking-wider md:text-3xl">
         {children}
       </h3>
     ),
