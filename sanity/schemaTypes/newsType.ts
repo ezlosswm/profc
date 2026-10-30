@@ -31,6 +31,16 @@ export const newsType = defineType({
       title: "Headline Image",
       type: "image",
       options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          description: "Important for SEO and accessbility.",
+          validation: (Rule) =>
+            Rule.required().error("Alt text is requested for accessbility."),
+        },
+      ],
     }),
     defineField({
       name: "summary",

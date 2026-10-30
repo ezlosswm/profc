@@ -3,6 +3,7 @@ import Section from "../ui/section";
 import { SectionHeading } from "../ui/sectionheading";
 import type { Sponsor } from "@/types/types";
 import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
 
 type SponsorsProps = {
   sponsors: Sponsor[];
@@ -18,16 +19,27 @@ export default async function SponsorsAndPartners({ sponsors }: SponsorsProps) {
           {sponsors.map((sponsor) => (
             <li
               key={sponsor.sponsorName}
-              className="relative flex items-center justify-center w-full h-32 md:h-40 bg-white/5 text-center"
+              className="group text-center overflow-hidden "
             >
-              <Image
-                src={urlFor(sponsor.sponsorImage).auto("format").url()}
-                width={200}
-                height={200}
-                loading="lazy"
-                alt={sponsor.sponsorName}
-                className="object-cover object-center"
-              />
+              <Link
+                href={sponsor.href}
+                target="_blank"
+                className="relative flex items-center justify-center w-full h-32 md:h-40 bg-white/5"
+                rel="noreferrer noopener"
+              >
+                <Image
+                  src={urlFor(sponsor.sponsorImage)
+                    .width(200)
+                    .height(200)
+                    .auto("format")
+                    .url()}
+                  fill
+                  loading="lazy"
+                  sizes="(max-width: 1024px) 50vw, 25vw"
+                  alt={sponsor.sponsorName}
+                  className="object-cover object-center group-hover:scale-105 transition-transform"
+                />
+              </Link>
             </li>
           ))}
         </ul>

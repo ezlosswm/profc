@@ -1,12 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/react";
-
-export type ImageAsset = {
-  _type: string;
-  asset: {
-    _ref: string;
-    _type: string;
-  };
-};
+import type { Image } from "sanity";
 
 type TeamData = {
   title: string;
@@ -16,7 +9,7 @@ type TeamData = {
 export type AboutPageData = {
   heading: string;
   description: string;
-  image?: ImageAsset;
+  image?: Image;
   team: TeamData[];
 };
 
@@ -27,7 +20,7 @@ type ChampionData = {
   name: string;
   nickname?: string;
   limit: string;
-  image: ImageAsset;
+  image: Image;
 };
 
 export type ChampionsPageData = {
@@ -41,13 +34,14 @@ type SlugData = {
 
 export type Sponsor = {
   sponsorName: string;
-  sponsorImage: ImageAsset;
+  sponsorImage: Image;
+  href: string;
 };
 
 export type HomePageData = {
   upcomingEvent: Event[];
   sponsor: Sponsor[];
-  heroImage?: ImageAsset;
+  heroImage?: Image;
 };
 
 export type NewsArticle = {
@@ -57,7 +51,7 @@ export type NewsArticle = {
   author?: string;
   publicationDate: string;
   slug: SlugData;
-  headlineImage: ImageAsset;
+  headlineImage: Image;
   content: PortableTextBlock;
 };
 
@@ -108,7 +102,7 @@ export type Fighter = {
   name: string;
   slug: SlugData;
   nickname: string;
-  image: ImageAsset;
+  image: Image;
   country?: {
     code?: string; // e.g. BZ
     name?: string; // e.g. Belize
@@ -142,6 +136,6 @@ export type FightEvent = {
   venue: string;
   city: string;
   status: FightStatus;
-  image: ImageAsset;
+  image: Image;
   fightCard: Fight[];
 };

@@ -1,10 +1,11 @@
-import { ImageAsset, NewsArticle } from "@/types/types";
+import { NewsArticle } from "@/types/types";
+import type { Image as SanityImage } from "sanity";
+import Image from "next/image";
 import Section from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { formatDateTime } from "@/lib/formatter";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
-import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 
 type ArticleProps = {
@@ -40,10 +41,11 @@ export function Article({ newsArticle }: ArticleProps) {
             ) : (
               <></>
             )}
-
-            <PortableText value={newsArticle.content} components={components} />
           </Section>
         </header>
+        <Section className="max-w-3xl!">
+          <PortableText value={newsArticle.content} components={components} />
+        </Section>
       </article>
     </main>
   );
@@ -88,13 +90,13 @@ const components: PortableTextComponents = {
     },
   },
   types: {
-    image: ({ value }: { value: ImageAsset }) => {
+    image: ({ value }: { value: SanityImage }) => {
       if (!value) return null;
       return (
         <figure className="my-10">
           <Image
-            src={urlFor(value.asset).width(1920).height(1080).url()}
-            alt={value.asset._ref ?? ""}
+            src={urlFor(value).width(1920).height(1080).url()}
+            alt={value.alt as string}
             width={1920}
             height={1080}
             className="w-full object-cover"

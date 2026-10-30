@@ -57,7 +57,7 @@ function UpcomingEvents({ events }: EventsProps) {
               className="mx-auto max-w-7xl mt-10 overflow-hidden group border border-border bg-background grid md:grid-cols-12"
             >
               <Image
-                src={urlFor(event.image!.asset).width(1920).height(1080).url()}
+                src={urlFor(event.image!).width(1920).height(1080).url()}
                 alt={`Event flyer for ${event.name}`}
                 width={1920}
                 height={1080}
@@ -133,7 +133,7 @@ function PastEvents({ events }: EventsProps) {
                 className="flex h-full flex-col group overflow-hidden border border-border bg-background"
               >
                 <Image
-                  src={urlFor(event.image!.asset).width(800).height(500).url()}
+                  src={urlFor(event.image!).width(800).height(500).url()}
                   alt={`Fight card for ${event.name}`}
                   width={800}
                   height={500}

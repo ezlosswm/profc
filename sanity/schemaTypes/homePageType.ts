@@ -20,7 +20,7 @@ export const homePageType = defineType({
     }),
     defineField({
       name: "sponsor",
-      title: "Sponsor and/or Partner",
+      title: "Sponsors and/or Partners",
       type: "array",
       of: [
         defineArrayMember({
@@ -37,6 +37,11 @@ export const homePageType = defineType({
               title: "Sponsor's Logo/Image",
               type: "image",
               options: { hotspot: true },
+            }),
+            defineField({
+              name: "href",
+              title: "Sponsor Link",
+              type: "url",
             }),
           ],
         }),

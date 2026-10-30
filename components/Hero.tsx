@@ -1,6 +1,7 @@
 import { ArrowRight, Calendar, MapPin } from "lucide-react";
 import Image from "next/image";
-import type { ImageAsset, FightEvent } from "@/types/types";
+import type { Image as SanityImage } from "sanity";
+import type { FightEvent } from "@/types/types";
 import { Button } from "./ui/button";
 import { Countdown } from "./Countdown";
 import Section from "./ui/section";
@@ -8,7 +9,7 @@ import { urlFor } from "@/sanity/image";
 import { formatDateTime } from "@/lib/formatter";
 
 type HeroProps = {
-  heroImage?: ImageAsset;
+  heroImage?: SanityImage;
   event: FightEvent;
 };
 
@@ -34,7 +35,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
           />
         ) : (
           <Image
-            src={urlFor(event.image.asset)
+            src={urlFor(event.image)
               .width(1920)
               .height(1080)
               .auto("format")
@@ -83,7 +84,6 @@ export default async function Hero({ heroImage, event }: HeroProps) {
         <div className="mt-10 flex gap-8 lg:items-end lg:justify-between flex-col lg:flex-row">
           <Countdown startsAt={event.startsAt} />
 
-          {/* Button group */}
           <div className="inline-flex gap-2">
             <Button
               href="/contact"

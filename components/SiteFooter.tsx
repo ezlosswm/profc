@@ -21,6 +21,7 @@ export default function SiteFooter() {
               alt="PROFC logo"
               width={150}
               height={50}
+              sizes="120px"
               priority
               className="w-37.5 h-12.5"
             />
