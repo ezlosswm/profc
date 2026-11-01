@@ -1,3 +1,4 @@
+import { WEIGHT_CLASSES } from "@/data/constants/weightClasses";
 import { defineField, defineType } from "sanity";
 
 type FightReference = {
@@ -47,13 +48,7 @@ export const fightsType = defineType({
       title: "Weight class",
       type: "string",
       options: {
-        list: [
-          "Strawweight",
-          "Flyweight",
-          "Featherweight",
-          "Bantamweight",
-          "Lightweight",
-        ],
+        list: [...WEIGHT_CLASSES],
       },
     }),
     defineField({

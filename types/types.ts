@@ -58,10 +58,17 @@ export type NewsArticle = {
 type WeightClass =
   | "Female Strawweight"
   | "Female Flyweight"
+  | "Female Bantamweight"
+  | "Female Featherweight"
   | "Strawweight"
   | "Flyweight"
   | "Bantamweight"
-  | "Lightweight";
+  | "Featherweight"
+  | "Lightweight"
+  | "Welterweight"
+  | "Middleweight"
+  | "Light Heavyweight"
+  | "Heavyweight";
 
 type FightStatus = "upcoming" | "completed" | "cancelled";
 
@@ -97,12 +104,20 @@ type FightResult = {
   time?: string;
 };
 
+type SocialPlatform = {
+  name: string;
+  title: string;
+};
+
 export type Fighter = {
   _id: string;
-  name: string;
-  slug: SlugData;
-  nickname: string;
   image: Image;
+  name: string;
+  nickname: string;
+  slug: SlugData;
+  dob: string;
+  height: string;
+  club: string;
   country?: {
     code?: string; // e.g. BZ
     name?: string; // e.g. Belize
@@ -113,6 +128,10 @@ export type Fighter = {
     draws: number;
     noContests?: number;
   };
+  socialLinks: {
+    socialPlatforms: SocialPlatform;
+    href: string;
+  }[];
   weightClass: WeightClass;
 };
 

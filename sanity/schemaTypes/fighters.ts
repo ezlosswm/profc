@@ -1,3 +1,5 @@
+import { SOCIAL_PLATFORMS } from "@/data/constants/socials";
+import { WEIGHT_CLASSES } from "@/data/constants/weightClasses";
 import { defineField, defineType } from "sanity";
 
 export const fighterType = defineType({
@@ -6,10 +8,21 @@ export const fighterType = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "image",
+      title: "Portrait",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "name",
       title: "Full name",
       type: "string",
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "nickname",
+      title: "Nickname",
+      type: "string",
     }),
     defineField({
       name: "slug",
@@ -18,10 +31,35 @@ export const fighterType = defineType({
       options: { source: "name" },
     }),
     defineField({
-      name: "nickname",
-      title: "Nickname",
-      type: "string",
+      name: "dateOfBirth",
+      title: "Date of Birth",
+      type: "date",
     }),
+    defineField({
+      name: "height",
+      title: "Height",
+      type: "object",
+      fields: [
+        defineField({
+          name: "feet",
+          title: "Feet",
+          type: "number",
+          validation: (Rule) => Rule.required().integer().min(3).max(8),
+        }),
+        defineField({
+          name: "inches",
+          title: "Inches",
+          type: "number",
+          initialValue: 0,
+          validation: (Rule) => Rule.required().integer().min(0).max(11),
+        }),
+      ],
+      options: {
+        columns: 2,
+      },
+    }),
+
+    defineField({ name: "club", title: "Club", type: "string" }),
     defineField({
       name: "country",
       title: "Country of origin",
@@ -37,12 +75,6 @@ export const fighterType = defineType({
         },
         { name: "name", title: "Country name", type: "string" },
       ],
-    }),
-    defineField({
-      name: "image",
-      title: "Portrait",
-      type: "image",
-      options: { hotspot: true },
     }),
     defineField({
       name: "record",
@@ -76,17 +108,38 @@ export const fighterType = defineType({
       ],
     }),
     defineField({
+      name: "socialLinks",
+      title: "Social Media Links",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          name: "socialLink",
+          title: "Social Link",
+          fields: [
+            defineField({
+              name: "platform",
+              title: "Platform",
+              type: "string",
+              options: {
+                list: [...SOCIAL_PLATFORMS],
+              },
+            }),
+            defineField({
+              name: "url",
+              title: "Profile URL",
+              type: "url",
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: "weightClass",
       title: "Weight class",
       type: "string",
       options: {
-        list: [
-          "Strawweight",
-          "Flyweight",
-          "Featherweight",
-          "Bantamweight",
-          "Lightweight",
-        ],
+        list: [...WEIGHT_CLASSES],
       },
     }),
   ],
