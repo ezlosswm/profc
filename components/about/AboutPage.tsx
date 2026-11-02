@@ -1,5 +1,5 @@
 import Section from "@/components/ui/section";
-import { urlFor } from "@/sanity/image";
+import { urlFor } from "@/sanity/lib/image";
 import { AboutPageData } from "@/types/types";
 import Image from "next/image";
 import { sanityFetch } from "@/lib/sanity";
@@ -15,10 +15,7 @@ export async function AboutPage() {
     <main aria-labelledby="about-hero-title">
       <section className="relative min-h-[46vh]">
         <Image
-          src={urlFor(aboutPageData!.image!.asset)
-            .width(1920)
-            .height(1080)
-            .url()}
+          src={urlFor(aboutPageData!.image!.asset!).url()}
           alt="Ring side"
           width={1920}
           height={1920}
