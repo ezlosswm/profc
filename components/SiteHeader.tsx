@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/public/images/Logo.webp";
+import logo from "@/public/images/Logo-450.webp";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/data/navLinks";
