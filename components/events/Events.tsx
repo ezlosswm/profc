@@ -40,7 +40,13 @@ export default async function AllEvents() {
           Past events
         </h3>
 
-        <PastEvents events={events!} />
+        {!events || events.length === 0 ? (
+          <PastEvents events={events!} />
+        ) : (
+          <p className="mt-4 text-sm text-muted-foreground">
+            No events available at this time. Please check back later.
+          </p>
+        )}
       </Section>
     </main>
   );
@@ -63,7 +69,7 @@ function UpcomingEvents({ events }: EventsProps) {
                 height={1080}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
                 className="aspect-video size-full group-hover:scale-105 transition-transform ease-in-out duration-500 object-cover md:col-span-7 md:aspect-auto md:min-h-80"
-                loading="lazy"
+                loading="eager"
               />
               <div className="flex flex-col p-6 md:col-span-5 md:p-10">
                 <span className="w-fit bg-primary px-2 py-1 text-xs font-semibold text-white">

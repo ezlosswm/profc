@@ -81,6 +81,10 @@ export default async function Page({ params }: Props) {
   const newsArticle = await getNewsArticle(slug);
   const newsArticles = await getAllArticles();
 
+  const filteredArticles = newsArticles?.filter(
+    (article) => article.slug.current !== slug,
+  );
+
   if (!newsArticle) {
     notFound();
   }
@@ -88,17 +92,23 @@ export default async function Page({ params }: Props) {
   return (
     <Suspense fallback={<Loader />}>
       <Article newsArticle={newsArticle} />
-      {/* 
-      <Section className="max-w-3xl! mt-16">
-        <h2 className="font-heading text-2xl leading-[0.9]">Read more</h2>
-        <ul className="flex mt-6 gap-3">
-          {newsArticles!.map((article) => (
-            <li key={article._id} className="size-84">
-              <NewsCard article={article} />
-            </li>
-          ))}
-        </ul>
-      </Section> */}
+
+      <Section className="max-w-3xl! mt-16 w-full pb-12 pt-6 md:pb-16">
+        <h2 className="font-heading text-2xl leading-[0.9]">More News</h2>
+        {filteredArticles?.length === 0 ? (
+          <p className="text-lg text-muted-foreground mt-6">
+            No more news articles available.
+          </p>
+        ) : (
+          <ul className="flex w-full justify-start mt-6 gap-3">
+            {newsArticles!.map((article) => (
+              <li key={article._id} className="size-84">
+                <NewsCard article={article} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </Section>
     </Suspense>
   );
 }

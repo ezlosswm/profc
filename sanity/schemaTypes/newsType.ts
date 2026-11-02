@@ -19,7 +19,10 @@ export const newsType = defineType({
       title: "Headline",
       type: "string",
       description: "Article headline",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.max(50)
+          .warning(`A headline shouldn't be more than 50 characters.`)
+          .required(),
     }),
     defineField({
       name: "author",

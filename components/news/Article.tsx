@@ -100,7 +100,7 @@ const components: PortableTextComponents = {
             width={1920}
             height={1080}
             className="w-full object-cover"
-            loading="lazy"
+            loading="eager"
           />
         </figure>
       );

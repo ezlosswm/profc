@@ -14,9 +14,9 @@ export function Events({ event }: FightEventProps) {
     <>
       <Banner event={event!} />
       <main aria-labelledby="fight-card-title" className="bg-muted-background">
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <YouTubeEmbed videoId="Kwk90VoBjXQ" />
-        </div>
+        </div> */}
         <Section className="py-20 md:py-28">
           <SectionHeading id="fight-card-title" heading="Fight Card" />
           <ul className="space-y-6 mt-10">
