@@ -31,7 +31,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
             width={1920}
             height={1080}
             priority
-            className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
+            className="absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
           />
         ) : (
           <Image
@@ -44,7 +44,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
             width={1920}
             height={1080}
             priority
-            className="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
+            className="absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
           />
         )}
       </div>

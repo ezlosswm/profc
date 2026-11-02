@@ -22,7 +22,7 @@ export function Banner({ event }: BannerProps) {
         width={1920}
         height={1080}
         alt={`Event flyer for ${event.name}`}
-        className="absolute inset-0 -z-20 size-full object-cover"
+        className="absolute inset-0 -z-20 object-top size-full object-cover"
       />
       {/* Placeholder for future events */}
       {/* <YouTubeBackground videoId="Kwk90VoBjXQ" /> */}
