@@ -11,7 +11,7 @@ type SponsorsProps = {
 
 export default async function SponsorsAndPartners({ sponsors }: SponsorsProps) {
   return (
-    <div className="border-t border-border py-16 md:py-20">
+    <div className="border-t border-border bg-muted-background py-16 md:py-20">
       <Section aria-labelledby="sponsors-title">
         <SectionHeading id="sponsors-title" heading="Sponsors & Partners" />
 

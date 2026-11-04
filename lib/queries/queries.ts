@@ -46,6 +46,8 @@ export const SINGLE_EVENT_QUERY = `*[_type == "events" && slug.current == $slug]
 export const HOMEPAGE_QUERY = `
   *[_type == "homePage"][0]`;
 
+export const FIGHTERS_QUERY = `*[_type == "fighter"]`;
+
 export const CHAMPIONS_QUERY = `*[_type == "championsPage"][0]`;
 
 export const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;

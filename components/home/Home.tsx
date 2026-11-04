@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import Marquee from "@/components/home/MarqueeBanner";
 import SponsorsAndPartners from "@/components/home/SponsorsAndPartners";
+import Image from "next/image";
 import { LatestNews } from "@/components/home/LatestNews";
 import { FightEvent, HomePageData } from "@/types/types";
 import { sanityFetch } from "@/lib/sanity";
@@ -8,6 +9,7 @@ import { connection } from "next/server";
 import { sortEventsByAscendingTime } from "@/lib/sort";
 import { getUpcomingEvent } from "@/lib/filter";
 import { HOMEPAGE_QUERY, EVENTS_QUERY } from "@/lib/queries/queries";
+import Fighters from "./Fighters";
 
 async function HomePage() {
   await connection();
@@ -27,9 +29,12 @@ async function HomePage() {
   return (
     <>
       <Hero heroImage={homePageData!.heroImage} event={upcomingEvent} />
+
       <Marquee event={upcomingEvent} />
 
       <LatestNews />
+
+      <Fighters />
 
       <SponsorsAndPartners sponsors={homePageData!.sponsor} />
     </>

@@ -43,7 +43,7 @@ export function FightCard({ fight }: FightProps) {
           )}
           {/* Left */}
           <div className="flex items-center gap-4 md:gap-5 mt-3">
-            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
+            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border/50">
               <Image
                 src={urlFor(fight.redCorner.image).width(200).height(200).url()}
                 loading="lazy"
@@ -104,7 +104,7 @@ export function FightCard({ fight }: FightProps) {
             <></>
           )}
           <div className="mt-3 flex items-center gap-4 md:gap-5 md:flex-row-reverse md:text-right">
-            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border">
+            <div className="size-24 md:size-36 flex shrink-0 items-center justify-center border border-border/50">
               <Image
                 src={urlFor(fight.blueCorner.image)
                   .width(200)
