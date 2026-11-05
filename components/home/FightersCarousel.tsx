@@ -114,13 +114,13 @@ export default function FightersCarousel({ fighters }: FightersCarouselProps) {
                 fill
                 sizes="(max-width: 640px) 88vw, (max-width: 1024px) 48vw, 32vw"
                 loading="lazy"
-                className="object-cover object-top transition-transform duration-500 ease-in-out group-hover:scale-105"
+                className="object-cover object-top transition-transform duration-500 ease-in-out group-hover:scale-105 motion-reduce:transform-none motion-reduce:transition-none"
               />
               <div
                 aria-hidden="true"
                 className="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent"
               />
-              <h3 className="absolute inset-x-0 bottom-0 border-l-4 border-primary px-5 py-5 font-heading text-3xl uppercase leading-none text-foreground md:px-6 md:text-4xl">
+              <h3 className="absolute inset-x-0 bottom-0 border-l-4 border-primary px-5 py-5 font-heading text-3xl uppercase leading-none text-foreground transition-[padding] duration-300 group-hover:pl-7 md:px-6 md:text-4xl motion-reduce:transition-none">
                 {fighter.name}
               </h3>
             </div>

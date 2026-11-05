@@ -34,7 +34,7 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const baseStyles =
-  "inline-flex cursor-pointer leading-5 [&_svg]:gap-2 [&_svg]:shrink-0 items-center justify-center px-4 py-2 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex cursor-pointer leading-5 [&_svg]:gap-2 [&_svg]:shrink-0 items-center justify-center px-4 py-2 text-sm font-medium transition-all duration-200 ease-out hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 motion-reduce:transform-none motion-reduce:transition-none";
 
 export function Button(props: Props) {
   const { children, type = "button", variant = "default" } = props;

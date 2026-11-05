@@ -31,7 +31,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
             width={1920}
             height={1080}
             priority
-            className="absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
+            className="hero-image absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
           />
         ) : (
           <Image
@@ -44,12 +44,12 @@ export default async function Hero({ heroImage, event }: HeroProps) {
             width={1920}
             height={1080}
             priority
-            className="absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
+            className="hero-image absolute inset-0 -z-20 size-full object-cover object-[70%_top]"
           />
         )}
       </div>
       <div
-        className="absolute inset-0 -z-10 bg-background/60"
+        className="hero-overlay absolute inset-0 -z-10 bg-background/60"
         aria-hidden="true"
       />
 
@@ -57,12 +57,12 @@ export default async function Hero({ heroImage, event }: HeroProps) {
       <Section className="mx-auto flex min-h-[92vh] flex-col justify-end pb-16 pt-28 md:pb-24">
         <h1
           id="hero-title"
-          className="font-heading uppercase tracking-tight mt-3 leading-[0.85] text-[22vw] sm:text-[9rem] lg:text-[11rem]"
+          className="hero-enter font-heading uppercase tracking-tight mt-3 leading-[0.85] text-[22vw] sm:text-[9rem] lg:text-[11rem]"
         >
           {event.name}
         </h1>
 
-        <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
+        <div className="hero-enter hero-enter-delay-1 mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-4 text-lg font-semibold">
           <div className="flex gap-2 items-center">
             <Calendar aria-hidden="true" className="size-4 text-primary" />
             <p>{formatDateTime(event.startsAt)}</p>
@@ -81,7 +81,7 @@ export default async function Hero({ heroImage, event }: HeroProps) {
           </div>
         </div>
 
-        <div className="mt-10 flex gap-8 lg:items-end lg:justify-between flex-col lg:flex-row">
+        <div className="hero-enter hero-enter-delay-2 mt-10 flex gap-8 lg:items-end lg:justify-between flex-col lg:flex-row">
           <Countdown startsAt={event.startsAt} />
 
           <div className="inline-flex gap-2">

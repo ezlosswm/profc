@@ -6,6 +6,7 @@ import { NewsCard } from "../NewsCard";
 import type { NewsArticle } from "@/types/types";
 import { sanityFetch } from "@/lib/sanity";
 import { NEWS_QUERY } from "@/lib/queries/queries";
+import { Reveal } from "@/components/Reveal";
 
 export async function LatestNews() {
   const news = await sanityFetch<NewsArticle[]>({
@@ -34,8 +35,10 @@ export async function LatestNews() {
           </p>
         ) : (
           <div className="mt-10 grid gap-x-8 gap-y-12 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-3">
-            {news!.map((article) => (
-              <NewsCard key={article.slug.current} article={article} />
+            {news!.map((article, index) => (
+              <Reveal key={article.slug.current} delay={(index % 3) * 80}>
+                <NewsCard article={article} />
+              </Reveal>
             ))}
           </div>
         )}

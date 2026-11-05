@@ -37,7 +37,7 @@ export default async function SponsorsAndPartners({ sponsors }: SponsorsProps) {
                   loading="lazy"
                   sizes="(max-width: 1024px) 50vw, 25vw"
                   alt={sponsor.sponsorName}
-                  className="object-cover object-center group-hover:scale-105 transition-transform"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500 motion-reduce:transform-none motion-reduce:transition-none"
                 />
               </Link>
             </li>

@@ -31,6 +31,7 @@ export function Countdown({ startsAt }: { startsAt: string }) {
           className="flex min-w-18 flex-col px-4 py-3 first:pl-0 sm:min-w-22"
         >
           <span
+            key={`${u.label}-${u.value}`}
             className="font-heading text-4xl tabular-nums leading-none sm:text-5xl"
             aria-hidden="true"
           >

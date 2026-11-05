@@ -21,7 +21,7 @@ export function NewsCard({ article }: NewsCardProps) {
         <Image
           src={urlFor(article.headlineImage).width(500).height(500).url()}
           alt={`${article.headline} headliner`}
-          className="group-hover:scale-105 object-cover object-center w-full aspect-16/10 transition-transform ease-in-out duration-500"
+          className="group-hover:scale-105 object-cover object-center w-full aspect-16/10 transition-transform ease-in-out duration-500 motion-reduce:transform-none motion-reduce:transition-none"
           loading="lazy"
           width={500}
           height={500}
@@ -43,7 +43,7 @@ export function NewsCard({ article }: NewsCardProps) {
         <span>Read article</span>
         <ArrowRightIcon
           aria-hidden="true"
-          className="group-hover:translate-x-0.5 ease-out size-4"
+          className="transition-transform duration-200 group-hover:translate-x-1 ease-out size-4 motion-reduce:transition-none"
         />
       </Button>
     </Link>
