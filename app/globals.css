@@ -131,6 +131,24 @@ body {
   @apply w-full border-0 border-b border-border bg-transparent px-0 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-0;
 }
 
+select.input__field {
+  @apply appearance-none cursor-pointer bg-transparent text-muted-foreground;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%239a948d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 18px;
+}
+
+select.input__field option {
+  @apply bg-background text-foreground px-6;
+}
+
+select.input__field option:disabled {
+  @apply text-foreground;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -9,7 +9,7 @@ export default function FooterNav() {
 
   return (
     <nav aria-label="Footer">
-      <ul className="flex flex-wrap gap-x-8 gap-y-3">
+      <ul className="flex flex-wrap gap-x-6 gap-y-3">
         {navLinks.map((link) => {
           const isActive = pathname === link.href;
 

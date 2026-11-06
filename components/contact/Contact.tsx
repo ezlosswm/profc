@@ -36,6 +36,7 @@ function ContactPage() {
 
       console.log("Name: ", formData.get("name"));
       console.log("\nEmail: ", formData.get("email"));
+      console.log("\nTicket Type: ", formData.get("ticket_type"));
       console.log("\nMessage: ", formData.get("message"));
 
       setStatus("sent");
@@ -50,6 +51,11 @@ function ContactPage() {
       form.reset();
     }, 900);
   }
+
+  const opts = [
+    { name: "VIP Seats", value: "VIP Seats" },
+    { name: "Table", value: "Table" },
+  ];
 
   return (
     <main aria-labelledby="contact-title" className="bg-muted-background">
@@ -116,6 +122,28 @@ function ContactPage() {
                 </div>
 
                 <div className="grid gap-8 sm:grid-cols-2">
+                  {topic === "Tickets" ? (
+                    <label className="block">
+                      <select
+                        name="ticket_type"
+                        className="input__field"
+                        defaultValue=""
+                        required
+                      >
+                        <option value="" disabled>
+                          Select ticket type
+                        </option>
+                        {opts.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  ) : (
+                    <></>
+                  )}
+
                   <label className="block">
                     <span className="text-sm font-medium text-muted-foreground"></span>
                     <input
@@ -168,4 +196,5 @@ function ContactPage() {
     </main>
   );
 }
+
 export default ContactPage;

@@ -57,3 +57,5 @@ export const NEWS_QUERY = `*[_type == "news"]`;
 export const NEWS_ARTICLE_QUERY = `
   *[_type == "news" && slug.current == $slug][0]
 `;
+
+export const GENERAL_INFO_QUERY = `*[_type == "generalInfo"][0]`;

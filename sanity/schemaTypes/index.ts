@@ -7,6 +7,7 @@ import { fightsType } from "./fights";
 import { fightResult } from "./fightResult";
 import { newsType } from "./newsType";
 import { eventType } from "./events";
+import { generalInfoType } from "./generalInfo";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,6 +17,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     fightsType,
     fighterType,
     fightResult,
+    generalInfoType,
     homePageType,
     newsType,
   ],

@@ -12,6 +12,7 @@
     "@portabletext/react": "^8.0.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.31.2",
+    "@tabler/icons-react": "^3.50.0",
     "@tailwindcss/typography": "^0.5.20",
     "lucide-react": "^1.56.0",
     "next": "^16.4.5",

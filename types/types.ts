@@ -104,9 +104,9 @@ type FightResult = {
   time?: string;
 };
 
-type SocialPlatform = {
-  name: string;
-  title: string;
+export type SocialPlatform = {
+  platform: string;
+  url: string;
 };
 
 export type Fighter = {
@@ -157,4 +157,11 @@ export type FightEvent = {
   status: FightStatus;
   image: Image;
   fightCard: Fight[];
+};
+
+export type GeneralInfo = {
+  _id: string;
+  contactNumber: string;
+  primaryEmail: string;
+  socialLinks: SocialPlatform[];
 };

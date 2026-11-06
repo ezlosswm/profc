@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import Marquee from "@/components/home/MarqueeBanner";
 import SponsorsAndPartners from "@/components/home/SponsorsAndPartners";
-import Image from "next/image";
 import { LatestNews } from "@/components/home/LatestNews";
 import { FightEvent, HomePageData } from "@/types/types";
 import { sanityFetch } from "@/lib/sanity";
