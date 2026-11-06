@@ -45,7 +45,7 @@ export default function ChampionsInteractive({
             height={1067}
             sizes="(min-width: 1024px) 33vw, 100vw"
             loading="eager"
-            alt={`Champion of the ${selectedChampion.division} division.`}
+            alt={`Champion of the ${selectedChampion.weightClass} division.`}
             className="aspect-square w-full object-cover object-top transition-transform duration-300 ease-in-out hover:scale-105"
           />
         </div>
@@ -84,10 +84,10 @@ export default function ChampionsInteractive({
                 className="border-b border-border align-baseline"
               >
                 <td className="w-[36%] py-7 pr-4 text-sm font-medium text-muted-foreground">
-                  {champion.division}
+                  {champion.weightClass}
 
                   <span className="mt-1 block text-muted-foreground sm:hidden">
-                    {champion.limit}
+                    {champion.weightClass}
                   </span>
                 </td>
 
@@ -111,7 +111,7 @@ export default function ChampionsInteractive({
                 </th>
 
                 <td className="hidden py-7 text-right font-display text-xl tabular-nums text-muted sm:table-cell">
-                  {champion.limit}
+                  {champion.weightClass}
                 </td>
               </tr>
             ))}

@@ -58,7 +58,36 @@ export const fighterType = defineType({
         columns: 2,
       },
     }),
+    defineField({
+      name: "isChampion",
+      title: "Champion",
+      type: "boolean",
+      description: "Does this fighter currently hold a championship?",
+      initialValue: false,
+    }),
+    defineField({
+      name: "championships",
+      title: "Championships",
+      type: "array",
+      description:
+        "Select all weight classes in which this fighter holds a championship.",
+      of: [{ type: "string" }],
+      options: {
+        list: [...WEIGHT_CLASSES],
+      },
+      hidden: ({ document }) => !document?.isChampion,
+      validation: (Rule) =>
+        Rule.custom((championships, context) => {
+          if (
+            context.document?.isChampion &&
+            (!championships || championships.length === 0)
+          ) {
+            return "Select at least one championship weight class.";
+          }
 
+          return true;
+        }),
+    }),
     defineField({ name: "club", title: "Club", type: "string" }),
     defineField({
       name: "country",

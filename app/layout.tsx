@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Anton } from "next/font/google";
 import logo from "@/public/images/Logo.webp";
 import "./globals.css";
+import CookieConsent from "@/components/CookiesConsent";
 
 const inter = Inter({
   variable: "--font-inter",

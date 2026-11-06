@@ -10,11 +10,15 @@ export async function ChampionsPage() {
     errorMessage: "Failed to get champion page data",
   });
 
+  const champions = championsPageData?.champions.filter(
+    (fighter) => fighter.isChampion,
+  );
+
   return (
     <main className="bg-muted-background pb-20 pt-32 md:pb-28 md:pt-40">
       <Section aria-labelledby="champion-title">
         <ChampionsInteractive
-          champions={championsPageData!.champions}
+          champions={champions!}
           description={championsPageData!.description}
         />
       </Section>

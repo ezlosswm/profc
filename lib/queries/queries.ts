@@ -48,7 +48,41 @@ export const HOMEPAGE_QUERY = `
 
 export const FIGHTERS_QUERY = `*[_type == "fighter"]`;
 
-export const CHAMPIONS_QUERY = `*[_type == "championsPage"][0]`;
+export const CHAMPIONS_QUERY = ` 
+  *[_type == "championsPage"][0] {
+    description,
+    "champions": *[_type == "fighter"] {
+      _id,
+      name,
+      nickname,
+      isChampion,
+      championships,
+      slug,
+      dob,
+      height,
+      club,
+      country {
+        code,
+        name
+      },
+      record {
+        wins,
+        losses,
+        draws,
+        noContests
+      },
+      socialLinks[] {
+        socialPlatforms,
+        href
+      },
+      weightClass,
+      image {
+        ...,
+        asset->
+      }
+    }
+  }
+`;
 
 export const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
 

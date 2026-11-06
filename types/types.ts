@@ -15,17 +15,9 @@ export type AboutPageData = {
 
 export type FormStatus = "idle" | "sending" | "sent" | "error";
 
-type ChampionData = {
-  division: string;
-  name: string;
-  nickname?: string;
-  limit: string;
-  image: Image;
-};
-
 export type ChampionsPageData = {
   description: string;
-  champions: ChampionData[];
+  champions: Fighter[];
 };
 
 type SlugData = {
@@ -114,6 +106,8 @@ export type Fighter = {
   image: Image;
   name: string;
   nickname: string;
+  isChampion: boolean;
+  championships?: WeightClass[];
   slug: SlugData;
   dob: string;
   height: string;

@@ -67,7 +67,7 @@ function UpcomingEvents({ events }: EventsProps) {
                 alt={`Event flyer for ${event.name}`}
                 width={1920}
                 height={1080}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 330px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 58vw, 746px"
                 className="aspect-video size-full group-hover:scale-105 transition-transform ease-in-out duration-500 object-cover md:col-span-7 md:aspect-auto md:min-h-80"
                 loading="eager"
               />

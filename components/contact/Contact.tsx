@@ -6,6 +6,7 @@ import { formTopics } from "@/data/topics";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckIcon, LoaderCircle } from "lucide-react";
+import Image from "next/image";
 
 function ContactPage() {
   const params = useSearchParams();
@@ -58,7 +59,22 @@ function ContactPage() {
   ];
 
   return (
-    <main aria-labelledby="contact-title" className="bg-muted-background">
+    <main
+      aria-labelledby="contact-title"
+      className="bg-muted-background relative isolate overflow-hidden"
+    >
+      <Image
+        src=""
+        alt="Ye"
+        width={1920}
+        height={1080}
+        priority
+        className="absolute inset-0 -z-20 h-[46vh] min-h-80 w-full object-cover object-center"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-background/50"
+      />
       <Section className="min-h-[80vh] pb-20 pt-32 md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">

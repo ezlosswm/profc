@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/sanity/env";
 
-const siteName = "PROFC Belize";
-const siteUrl = "https://profc.vercel.app";
-const defaultImage = `${siteUrl}/images/profc-og.webp`;
+export const SITE_NAME = "PROFC Belize";
+const defaultImage = `${SITE_URL}/images/profc-og.webp`;
 
 type PageMetadataOptions = {
   title: string;
@@ -23,9 +23,9 @@ export function createPageMetadata({
   path,
   openGraph,
 }: PageMetadataOptions): Metadata {
-  const url = `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`;
+  const url = `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
   const image = openGraph?.image ?? defaultImage;
-  const ogTitle = openGraph?.title ?? `${title} | ${siteName}`;
+  const ogTitle = openGraph?.title ?? `${title} | ${SITE_NAME}`;
   const ogDescription = openGraph?.description ?? description;
 
   return {
@@ -38,7 +38,7 @@ export function createPageMetadata({
 
     openGraph: {
       type: openGraph?.type ?? "website",
-      siteName,
+      siteName: SITE_NAME,
       locale: "en_BZ",
       url,
       title: ogTitle,

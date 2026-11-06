@@ -14,6 +14,8 @@ import { sanityFetch } from "@/lib/sanity";
 import { GENERAL_INFO_QUERY } from "@/lib/queries/queries";
 import { GeneralInfo } from "@/types/types";
 import { generalInfoBackUp } from "@/data/generalInfo";
+import CookieSettingsButton from "./CookieSettingsButton"; // 👈 Import the client component
+import { Button } from "./ui/button";
 
 async function CurrentYear() {
   await connection();
@@ -44,34 +46,17 @@ export default async function SiteFooter() {
     <footer className="border-t border-border">
       <Section>
         <div className="pt-12 w-full">
-          {/* <h1 className="font-heading text-center tracking-[-3px] leading-19vw md:text-[13vw] md:leading-19vw text-[19vw] uppercase">
-            PROFC Belize
-          </h1> */}
           <Image
             src={logo}
             width={1920}
             height={1080}
-            loading="lazy"
+            loading="eager"
             alt="PROFC Belize logo"
           />
         </div>
 
-        <div className="py-12 space-y-5">
-          <ul className="pb-5 flex gap-4 items-center w-full justify-center text-muted-foreground">
-            {generalInfo.socialLinks.map((social, index) => (
-              <li key={`${index}`}>
-                <Link
-                  href={social.url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <SocialPlatformIcon platform={social.platform} />
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="pb-12 flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+        <div className="py-12 space-y-4">
+          <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div>
               <Link aria-label="PROFC Belize Home" href="/">
                 <Image
@@ -89,15 +74,47 @@ export default async function SiteFooter() {
             <FooterNav />
           </div>
 
-          <div className="mx-auto max-w-7xl border-t border-border px-5 py-6 md:px-8">
-            <p className="text-sm text-muted-foreground">
-              ©{""}
-              <Suspense fallback="2026">
-                <CurrentYear />
-              </Suspense>{" "}
-              {""}
-              PROFC Belize MMA LTD. All rights reserved.
-            </p>
+          <ul className="border-y border-border py-8 flex gap-4 items-center w-full justify-center text-muted-foreground">
+            {generalInfo.socialLinks.map((social, index) => (
+              <li key={`${index}`}>
+                <Link
+                  href={social.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <SocialPlatformIcon platform={social.platform} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mx-auto max-w-7xl px-5 md:px-8">
+            <div className="flex justify-between flex-col md:flex-row gap-y-4 items-center w-full">
+              <p className="text-sm text-muted-foreground">
+                ©{""}
+                <Suspense fallback="2026">
+                  <CurrentYear />
+                </Suspense>{" "}
+                {""}
+                PROFC Belize MMA LTD. All rights reserved.
+              </p>
+
+              <ul className="flex gap-4 items-center">
+                <li>
+                  <Button variant="nav" href="/terms">
+                    Terms of service
+                  </Button>
+                </li>
+                <li>
+                  <Button variant="nav" href="/privacy">
+                    Privacy
+                  </Button>
+                </li>
+                <li>
+                  <CookieSettingsButton />{" "}
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </Section>
