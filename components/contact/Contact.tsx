@@ -1,14 +1,20 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import type { FormStatus } from "@/types/types";
+import type { ContactPageData, FormStatus } from "@/types/types";
 import Section from "@/components/ui/section";
 import { formTopics } from "@/data/topics";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckIcon, LoaderCircle } from "lucide-react";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-function ContactPage() {
+type ContactPageProps = {
+  pageData: ContactPageData;
+};
+
+function ContactPage({ pageData }: ContactPageProps) {
+  console.log("\n\n\n\n", pageData);
   const params = useSearchParams();
   const requested = params.get("topic");
   const [topic, setTopic] = useState(
@@ -59,22 +65,21 @@ function ContactPage() {
   ];
 
   return (
-    <main
-      aria-labelledby="contact-title"
-      className="bg-muted-background relative isolate overflow-hidden"
-    >
-      <Image
-        src=""
-        alt="Ye"
-        width={1920}
-        height={1080}
-        priority
-        className="absolute inset-0 -z-20 h-[46vh] min-h-80 w-full object-cover object-center"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-background/50"
-      />
+    <main aria-labelledby="contact-title">
+      <section className="relative isolate min-h-[46vh] overflow-hidden">
+        <Image
+          src={urlFor(pageData.image!).url()}
+          alt="Ye"
+          width={1920}
+          height={1080}
+          priority
+          className="absolute inset-0 -z-20 h-[46vh] w-full object-cover object-top"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-background/50"
+        />
+      </section>
       <Section className="min-h-[80vh] pb-20 pt-32 md:pb-28 md:pt-40">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
@@ -82,8 +87,7 @@ function ContactPage() {
               id="contact-title"
               className="uppercase text-6xl font-heading md:text-7xl leading-[0.9]"
             >
-              Get in <br />
-              the fight
+              {pageData.heading}
             </h1>
 
             <p className="mt-6 max-w-sm text-muted-foreground">

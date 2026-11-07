@@ -86,6 +86,8 @@ export const CHAMPIONS_QUERY = `
 
 export const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
 
+export const CONTACT_QUERY = `*[_type == "contactPage"][0]`;
+
 export const NEWS_QUERY = `*[_type == "news"]`;
 
 export const NEWS_ARTICLE_QUERY = `

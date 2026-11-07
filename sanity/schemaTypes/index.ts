@@ -11,11 +11,13 @@ import { generalInfoType } from "./generalInfo";
 import { legalLink } from "./legalLink";
 import { legalSection } from "./legalSection";
 import { legalPage } from "./legalPage";
+import { contactPageType } from "./contactPageType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     aboutPageType,
     championsPageType,
+    contactPageType,
     eventType,
     fightsType,
     fighterType,

@@ -2,6 +2,10 @@ import { createPageMetadata } from "@/lib/seo";
 import ContactPage from "@/components/contact/Contact";
 import { Suspense } from "react";
 import Loader from "@/components/Loader";
+import { sanityFetch } from "@/lib/sanity";
+import type { ContactPageData } from "@/types/types";
+import { CONTACT_QUERY } from "@/lib/queries/queries";
+import { contactPageDataBackup } from "@/data/contactPageInfo";
 
 export const metadata = createPageMetadata({
   title: "Contact",
@@ -10,10 +14,19 @@ export const metadata = createPageMetadata({
   path: "/contact",
 });
 
-export default function Contact() {
+export default async function Contact() {
+  let pageData = await sanityFetch<ContactPageData>({
+    query: CONTACT_QUERY,
+    errorMessage: "Unable to get Contact Page page data.",
+  });
+
+  if (!pageData) {
+    pageData = contactPageDataBackup;
+  }
+
   return (
     <Suspense fallback={<Loader />}>
-      <ContactPage />
+      <ContactPage pageData={pageData} />
     </Suspense>
   );
 }

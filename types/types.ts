@@ -6,12 +6,18 @@ type TeamData = {
   name: string;
 };
 
-export type AboutPageData = {
+export type PageData = {
+  _id: string;
   heading: string;
   description: string;
   image?: Image;
+};
+
+export type AboutPageData = PageData & {
   team: TeamData[];
 };
+
+export type ContactPageData = PageData;
 
 export type FormStatus = "idle" | "sending" | "sent" | "error";
 
