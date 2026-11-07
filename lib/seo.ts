@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SITE_URL } from "@/sanity/env";
 
 export const SITE_NAME = "PROFC Belize";
-const defaultImage = `${SITE_URL}/images/profc-og.webp`;
+const defaultImage = `${SITE_URL}/images/Logo-450.webp`;
 
 type PageMetadataOptions = {
   title: string;
